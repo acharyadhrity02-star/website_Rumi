@@ -4,321 +4,257 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rumi Acharya | Biomaterials & 3D Bioprinting Researcher</title>
-
-  <!-- SEO -->
   <meta name="description" content="Rumi Acharya — Biomaterials, 3D bioprinting, smart hydrogels, ion-doped bioceramics, and electromagnetic-stimulus regenerative platforms." />
   <meta name="theme-color" content="#8b5cf6" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <style>
-    *{ margin:0; padding:0; box-sizing:border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     :root{
       --primary:#8b5cf6;
       --secondary:#6d28d9;
-      --accent:#a78bfa;
-      --text-dark:#0b1220;
-      --text-light:#556070;
-      --bg-light:#f7f8ff;
-      --white:#ffffff;
-
-      --shadow: 0 12px 34px rgba(17,24,39,0.10);
-      --shadow-2: 0 18px 55px rgba(17,24,39,0.16);
+      --pink:#ec4899;
+      --text:#0b1220;
+      --muted:#5c6778;
+      --bg:#ffffff;
+      --bg2:#f7f8ff;
+      --card:#ffffff;
+      --border: rgba(17,24,39,0.10);
+      --shadow: 0 14px 34px rgba(17,24,39,0.12);
+      --shadow2: 0 22px 70px rgba(17,24,39,0.20);
       --radius: 18px;
-
-      --glass: rgba(255,255,255,0.10);
-      --glass-border: rgba(255,255,255,0.22);
-
       --max: 1180px;
     }
-
     html{ scroll-behavior:smooth; }
     body{
-      font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text-dark);
-      background: var(--white);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
       line-height: 1.6;
       overflow-x: hidden;
     }
-
-    /* Layout */
     .container{
       max-width: var(--max);
       margin: 0 auto;
-      padding: 0 22px;
+      padding: 0 20px;
     }
 
-    /* Smooth reveal (WOW-like) */
-    .reveal{
-      opacity: 0;
-      transform: translateY(14px);
-      transition: opacity .6s ease, transform .6s ease;
-      will-change: opacity, transform;
-    }
-    .reveal.in{
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ===== NAV ===== */
+    /* NAV */
     nav{
       position: fixed;
       top:0; left:0; right:0;
       z-index: 9999;
-      background: rgba(255,255,255,0.78);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(17,24,39,0.06);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(17,24,39,0.07);
     }
     nav .container{
       display:flex;
-      align-items:center;
       justify-content:space-between;
-      padding: 14px 22px;
-      gap: 16px;
+      align-items:center;
+      padding: 14px 20px;
+      gap: 12px;
     }
-    .nav-brand{
-      font-weight: 900;
-      letter-spacing: -0.2px;
-      color: var(--primary);
+    .brand{
       display:flex;
       align-items:center;
       gap: 10px;
+      font-weight: 900;
+      letter-spacing: -0.3px;
+      color: var(--primary);
       user-select:none;
       white-space: nowrap;
     }
-    .nav-brand .dot{
-      width: 10px; height:10px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), #ec4899);
-      box-shadow: 0 10px 22px rgba(139,92,246,0.35);
+    .brand .dot{
+      width: 10px; height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary), var(--pink));
+      box-shadow: 0 12px 22px rgba(139,92,246,0.35);
     }
-    .nav-menu{
+    .menu{
       list-style:none;
       display:flex;
+      gap: 18px;
       align-items:center;
-      gap: 1.25rem;
     }
-    .nav-menu a{
+    .menu a{
       text-decoration:none;
       color: rgba(11,18,32,0.92);
       font-weight: 750;
       font-size: 0.95rem;
+      opacity: 0.95;
       transition: .2s ease;
-      opacity: .92;
     }
-    .nav-menu a:hover{ color: var(--primary); opacity: 1; }
+    .menu a:hover{ color: var(--primary); }
     .hamburger{
       display:none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 8px 10px;
+      border: 1px solid rgba(17,24,39,0.10);
+      background: rgba(255,255,255,0.92);
+      padding: 10px 12px;
       border-radius: 12px;
-      border: 1px solid rgba(17,24,39,0.08);
-      background: rgba(255,255,255,0.70);
+      cursor: pointer;
     }
     .hamburger span{
-      width: 22px; height: 2px;
+      display:block;
+      width: 22px;
+      height: 2px;
       background: rgba(11,18,32,0.9);
-      border-radius: 999px;
-      transition: .2s ease;
+      margin: 5px 0;
+      border-radius: 99px;
     }
 
-    /* ===== HERO ===== */
+    /* HERO */
     .hero{
       margin-top: 64px;
-      padding: 82px 0 40px;
-      color: var(--white);
-      position: relative;
-      overflow: hidden;
+      padding: 82px 0 44px;
+      color: #fff;
       background:
-        radial-gradient(1100px 600px at 12% 28%, rgba(255,255,255,0.18), transparent 60%),
-        radial-gradient(900px 500px at 85% 30%, rgba(167,139,250,0.22), transparent 60%),
-        linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-    }
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background:
-        radial-gradient(600px 400px at 20% 40%, rgba(255,255,255,0.12), transparent 70%),
-        radial-gradient(500px 350px at 80% 60%, rgba(255,255,255,0.10), transparent 70%);
-      pointer-events:none;
-      filter: blur(0.2px);
-      opacity: .9;
-    }
-    .hero-content{
+        radial-gradient(1000px 520px at 12% 30%, rgba(255,255,255,0.18), transparent 60%),
+        radial-gradient(900px 520px at 85% 35%, rgba(167,139,250,0.22), transparent 60%),
+        linear-gradient(135deg, var(--primary) 0%, var(--pink) 100%);
       position: relative;
+      overflow:hidden;
+    }
+    .hero-grid{
       display:grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 36px;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 22px;
       align-items:center;
     }
-
     .hero h1{
-      font-size: 3.05rem;
-      font-weight: 950;
-      letter-spacing: -0.6px;
+      font-size: 3.0rem;
       line-height: 1.05;
+      font-weight: 950;
+      letter-spacing: -0.7px;
       margin-bottom: 10px;
     }
     .hero h2{
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       font-weight: 850;
-      opacity: .96;
-      margin-bottom: 10px;
-      letter-spacing: -0.2px;
+      opacity: 0.96;
+      margin-bottom: 14px;
     }
-    .hero .chips{
+    .chips{
       display:flex;
-      flex-wrap: wrap;
+      flex-wrap:wrap;
       gap: 10px;
-      margin: 14px 0 16px;
+      margin-bottom: 14px;
     }
     .chip{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
       padding: 9px 12px;
       border-radius: 999px;
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
       font-weight: 750;
       font-size: 0.92rem;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.14);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.16);
       white-space: nowrap;
     }
-    .hero-meta{
+    .meta{
       display:flex;
       flex-wrap: wrap;
-      gap: 12px 18px;
-      margin: 12px 0 18px;
-      opacity: .96;
+      gap: 10px 16px;
+      margin: 14px 0 18px;
+      opacity: 0.97;
+      font-weight: 750;
     }
-    .hero-meta span{
+    .meta span{
       display:inline-flex;
       align-items:center;
-      gap: 9px;
-      font-weight: 750;
-      font-size: 0.96rem;
+      gap: 10px;
+      font-size: 0.95rem;
     }
-
-    .hero-actions{
+    .pill-ico{
+      width: 28px;
+      height: 28px;
+      border-radius: 10px;
+      display:grid;
+      place-items:center;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.20);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.15);
+      flex: 0 0 auto;
+    }
+    .actions{
       display:flex;
-      flex-wrap: wrap;
+      flex-wrap:wrap;
       gap: 12px;
-      margin-top: 16px;
-      align-items:center;
+      margin-top: 6px;
     }
     .btn{
       text-decoration:none;
-      border-radius: 999px;
       padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 0.95rem;
       display:inline-flex;
       align-items:center;
       gap: 10px;
-      font-weight: 850;
-      font-size: 0.95rem;
-      transition: .22s ease;
+      transition: .2s ease;
       white-space: nowrap;
     }
-    .btn-primary{
-      background: var(--white);
+    .btn.primary{
+      background: #fff;
       color: var(--primary);
-      box-shadow: 0 16px 32px rgba(0,0,0,0.18);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.18);
     }
-    .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 20px 44px rgba(0,0,0,0.22); }
-    .btn-secondary{
-      color: var(--white);
-      border: 2px solid rgba(255,255,255,0.88);
+    .btn.primary:hover{ transform: translateY(-2px); box-shadow: 0 24px 56px rgba(0,0,0,0.22); }
+    .btn.secondary{
+      border: 2px solid rgba(255,255,255,0.9);
+      color: #fff;
       background: transparent;
     }
-    .btn-secondary:hover{
-      background: var(--white);
-      color: var(--primary);
-      transform: translateY(-2px);
-    }
+    .btn.secondary:hover{ background: #fff; color: var(--primary); transform: translateY(-2px); }
 
-    .social-links{
+    /* Showcase images (BIG) */
+    .showcase{
       display:flex;
-      gap: 12px;
-      margin-top: 14px;
-    }
-    .social-links a{
-      width: 40px; height: 40px;
-      border-radius: 14px;
-      display:grid;
-      place-items:center;
-      color: var(--white);
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.26);
-      transition: .2s ease;
-      text-decoration:none;
-    }
-    .social-links a:hover{
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.18);
-      border-color: rgba(255,255,255,0.40);
-    }
-
-    /* Hero card: two big images (WOW) */
-    .hero-showcase{
-      display:flex;
-      flex-direction: column;
+      flex-direction:column;
       gap: 14px;
-      justify-content: center;
-      align-items: stretch;
     }
-    .showcase-card{
+    .shot{
       border-radius: 26px;
       overflow:hidden;
-      position: relative;
-      border: 1px solid rgba(255,255,255,0.22);
+      position:relative;
+      border: 1px solid rgba(255,255,255,0.20);
       background: rgba(255,255,255,0.08);
-      box-shadow: 0 26px 70px rgba(0,0,0,0.28);
-      transform: translateZ(0);
+      box-shadow: 0 28px 78px rgba(0,0,0,0.28);
     }
-    .showcase-card:hover{ box-shadow: 0 34px 90px rgba(0,0,0,0.34); }
-    .showcase-img{
+    .shot img{
       width: 100%;
-      height: 255px;
+      height: 250px;
       object-fit: cover;
       display:block;
+      background: rgba(0,0,0,0.10);
       transform: scale(1.02);
       transition: transform .45s ease;
-      background: rgba(0,0,0,0.06);
     }
-    .showcase-card:hover .showcase-img{ transform: scale(1.06); }
-    .showcase-overlay{
+    .shot:hover img{ transform: scale(1.06); }
+    .overlay{
       position:absolute;
       inset:0;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.55));
+      background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.60));
       pointer-events:none;
     }
-    .showcase-label{
+    .caption{
       position:absolute;
       left: 14px;
-      bottom: 14px;
       right: 14px;
+      bottom: 14px;
       display:flex;
-      justify-content: space-between;
-      align-items: flex-end;
+      justify-content:space-between;
+      align-items:flex-end;
       gap: 12px;
+      color: #fff;
       pointer-events:none;
     }
-    .showcase-label .title{
+    .caption .t{
       font-weight: 950;
       letter-spacing: -0.2px;
       line-height: 1.2;
-      font-size: 1.02rem;
       text-shadow: 0 10px 22px rgba(0,0,0,0.45);
     }
-    .showcase-label .tag{
+    .badge{
       display:inline-flex;
       align-items:center;
       gap: 8px;
@@ -326,371 +262,235 @@
       border-radius: 999px;
       background: rgba(255,255,255,0.14);
       border: 1px solid rgba(255,255,255,0.22);
-      font-weight: 850;
+      font-weight: 900;
       font-size: 0.85rem;
       backdrop-filter: blur(8px);
       box-shadow: 0 12px 26px rgba(0,0,0,0.18);
       white-space: nowrap;
     }
-    .showcase-btn{
-      position:absolute;
-      top: 14px;
-      right: 14px;
-      pointer-events:auto;
-      border: 1px solid rgba(255,255,255,0.25);
-      background: rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.95);
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      display:grid;
-      place-items:center;
-      cursor:pointer;
-      transition: .2s ease;
-      backdrop-filter: blur(10px);
-    }
-    .showcase-btn:hover{
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.20);
-      border-color: rgba(255,255,255,0.40);
-    }
-
-    /* ===== SECTION BASE ===== */
-    section{ padding: 56px 0; }
-    .bg-light{ background: var(--bg-light); }
-
-    .section-title{
-      font-size: 2.05rem;
-      font-weight: 950;
-      text-align:center;
-      letter-spacing: -0.4px;
-      margin-bottom: 12px;
-    }
-    .section-title::after{
-      content:"";
-      display:block;
-      width: 74px;
-      height: 4px;
-      border-radius: 999px;
-      margin: 12px auto 0;
-      background: linear-gradient(90deg, var(--primary), #ec4899);
-    }
-    .subtext-center{
-      max-width: 920px;
-      margin: 0 auto 20px;
-      text-align:center;
-      color: var(--text-light);
-      font-weight: 540;
-    }
-
-    .card{
-      background: var(--white);
-      border-radius: var(--radius);
-      border: 1px solid rgba(17,24,39,0.06);
-      box-shadow: var(--shadow);
-    }
-
-    /* ===== ABOUT ===== */
-    .summary-box{
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 22px;
-      border-left: 6px solid var(--primary);
-    }
-    .summary-box p{
-      color: var(--text-light);
-      font-weight: 540;
-      font-size: 1.02rem;
-      line-height: 1.85;
-    }
-    .summary-box p + p{ margin-top: 12px; }
-
-    /* ===== HIGHLIGHTS (BIG IMAGES) ===== */
-    .highlights-wrap{
-      max-width: var(--max);
-      margin: 18px auto 0;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .highlight{
-      border-radius: 26px;
-      overflow:hidden;
-      position:relative;
-      transition: transform .22s ease, box-shadow .22s ease;
-      box-shadow: var(--shadow-2);
-      border: 1px solid rgba(17,24,39,0.06);
-      background: #fff;
-      min-height: 420px;
-    }
-    .highlight:hover{ transform: translateY(-4px); }
-    .highlight img{
-      width:100%;
-      height: 320px;
-      object-fit: cover;
-      display:block;
-      background: rgba(17,24,39,0.04);
-      transform: scale(1.02);
-      transition: transform .45s ease;
-    }
-    .highlight:hover img{ transform: scale(1.06); }
-    .highlight .body{
-      padding: 14px 16px 18px;
-    }
-    .highlight .kicker{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      margin-bottom: 8px;
-      flex-wrap: wrap;
-    }
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      font-weight: 900;
-      font-size: 0.82rem;
-      color: var(--primary);
-      background: rgba(139,92,246,0.10);
-      border: 1px solid rgba(139,92,246,0.22);
-    }
-    .highlight h3{
-      font-size: 1.12rem;
-      font-weight: 950;
-      letter-spacing: -0.2px;
-      line-height: 1.25;
-      margin-bottom: 6px;
-    }
-    .highlight p{
-      color: var(--text-light);
-      font-weight: 560;
-      line-height: 1.75;
-      font-size: 0.97rem;
-    }
-    .highlight .open{
+    .open{
       position:absolute;
       top: 14px;
       right: 14px;
       width: 44px;
       height: 44px;
       border-radius: 14px;
+      cursor:pointer;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.14);
       display:grid;
       place-items:center;
-      border: 1px solid rgba(255,255,255,0.28);
-      background: rgba(255,255,255,0.14);
-      backdrop-filter: blur(10px);
-      cursor:pointer;
+      color: #fff;
+      font-weight: 900;
       transition: .2s ease;
-      color: rgba(255,255,255,0.96);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.20);
+      backdrop-filter: blur(10px);
+      pointer-events:auto;
     }
-    .highlight .open:hover{
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.22);
-      border-color: rgba(255,255,255,0.40);
+    .open:hover{ transform: translateY(-2px); background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.40); }
+
+    /* Sections */
+    section{ padding: 56px 0; }
+    .bg2{ background: var(--bg2); }
+    .title{
+      text-align:center;
+      font-size: 2.05rem;
+      font-weight: 950;
+      letter-spacing: -0.4px;
+      margin-bottom: 12px;
     }
-    .highlight .shade{
-      position:absolute;
-      inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.00), rgba(0,0,0,0.28));
-      pointer-events:none;
+    .title::after{
+      content:"";
+      display:block;
+      width: 74px;
+      height: 4px;
+      border-radius: 999px;
+      margin: 12px auto 0;
+      background: linear-gradient(90deg, var(--primary), var(--pink));
+    }
+    .sub{
+      max-width: 920px;
+      margin: 0 auto 20px;
+      text-align:center;
+      color: var(--muted);
+      font-weight: 560;
     }
 
-    /* ===== SKILLS ===== */
-    .competencies-grid{
+    .card{
+      background: var(--card);
+      border: 1px solid rgba(17,24,39,0.07);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .summary{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 22px;
+      border-left: 6px solid var(--primary);
+    }
+    .summary p{
+      color: var(--muted);
+      font-weight: 560;
+      line-height: 1.85;
+      font-size: 1.02rem;
+    }
+    .summary p + p{ margin-top: 12px; }
+
+    /* Skills */
+    .skills{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 14px;
       max-width: var(--max);
       margin: 0 auto;
     }
-    .competency-tag{
+    .skill{
       grid-column: span 4;
       padding: 14px;
       border-radius: 14px;
-      background: var(--white);
-      border: 1px solid rgba(17,24,39,0.06);
-      box-shadow: 0 8px 22px rgba(17,24,39,0.07);
-      font-weight: 780;
+      border: 1px solid rgba(17,24,39,0.07);
+      background: #fff;
+      box-shadow: 0 10px 24px rgba(17,24,39,0.08);
+      font-weight: 850;
       color: rgba(11,18,32,0.92);
-      display:flex;
-      gap: 10px;
-      align-items:center;
-      justify-content:center;
       text-align:center;
       transition: .2s ease;
     }
-    .competency-tag i{ color: var(--primary); }
-    .competency-tag:hover{
+    .skill:hover{
       transform: translateY(-2px);
       border-color: rgba(139,92,246,0.35);
-      box-shadow: 0 14px 34px rgba(139,92,246,0.16);
+      box-shadow: 0 16px 34px rgba(139,92,246,0.16);
     }
 
-    /* ===== PUBLICATIONS ===== */
-    .pub-wrap{ max-width: 980px; margin: 0 auto; }
-    .pub-section{ margin-top: 12px; margin-bottom: 18px; }
-    .pub-section h3{
-      font-size: 1.2rem;
-      font-weight: 950;
-      color: var(--primary);
-      margin: 12px 0 10px;
-    }
-    .pub-item{
-      padding: 14px;
-      border-left: 5px solid var(--primary);
-      margin-bottom: 12px;
-      transition: .2s ease;
-    }
-    .pub-item:hover{ transform: translateX(4px); box-shadow: 0 14px 34px rgba(139,92,246,0.12); }
-    .pub-badge{
-      display:inline-block;
-      background: var(--primary);
-      color: #fff;
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 950;
-      margin-bottom: 8px;
-    }
-    .pub-title{ font-weight: 850; margin-bottom: 6px; }
-    .pub-venue{ color: var(--text-light); font-style: italic; font-weight: 560; }
-
-    /* ===== CONTACT ===== */
-    .contact-grid{
+    /* Contact */
+    .contacts{
       max-width: var(--max);
       margin: 0 auto;
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 16px;
     }
-    .contact-card{
+    .contact{
       grid-column: span 4;
       padding: 18px;
       text-align:center;
       transition: .2s ease;
     }
-    .contact-card:hover{ transform: translateY(-3px); box-shadow: var(--shadow-2); }
-    .contact-card i{ font-size: 1.9rem; color: var(--primary); margin-bottom: 10px; }
-    .contact-card h3{ font-weight: 950; margin-bottom: 8px; }
-    .contact-card p{ color: var(--text-light); font-weight: 650; }
-    .contact-card a{ color: var(--primary); text-decoration:none; font-weight: 900; }
-    .contact-card a:hover{ text-decoration: underline; }
+    .contact:hover{ transform: translateY(-3px); box-shadow: var(--shadow2); }
+    .contact .icon{
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 10px;
+      border-radius: 16px;
+      display:grid;
+      place-items:center;
+      background: rgba(139,92,246,0.12);
+      border: 1px solid rgba(139,92,246,0.18);
+      color: var(--primary);
+      font-weight: 950;
+    }
+    .contact h3{ font-weight: 950; margin-bottom: 8px; }
+    .contact p{ color: var(--muted); font-weight: 700; }
+    .contact a{ color: var(--primary); text-decoration:none; font-weight: 950; }
+    .contact a:hover{ text-decoration: underline; }
 
-    /* ===== FOOTER ===== */
+    /* Footer */
     footer{
-      background: #0b1220;
+      background:#0b1220;
       color: rgba(255,255,255,0.92);
       padding: 22px 0;
       margin-top: 10px;
     }
-    .footer-inner{
+    .foot{
       display:flex;
-      align-items:center;
       justify-content:space-between;
+      align-items:center;
       gap: 12px;
-      flex-wrap: wrap;
+      flex-wrap:wrap;
     }
-    .footer-links{ display:flex; gap: 14px; flex-wrap: wrap; }
-    .footer-links a{
+    .foot a{
       color: rgba(255,255,255,0.86);
       text-decoration:none;
-      font-weight: 850;
+      font-weight: 900;
       opacity: 0.95;
+      margin-left: 12px;
     }
-    .footer-links a:hover{ color: var(--accent); }
+    .foot a:hover{ color: #a78bfa; }
 
-    /* ===== LIGHTBOX ===== */
+    /* Lightbox */
     .lightbox{
       position: fixed;
       inset: 0;
-      background: rgba(8,10,18,0.74);
+      background: rgba(8,10,18,0.78);
       display:none;
       align-items:center;
       justify-content:center;
-      padding: 18px;
+      padding: 16px;
       z-index: 10000;
     }
     .lightbox.open{ display:flex; }
-    .lightbox-panel{
+    .viewer{
       width: min(1100px, 96vw);
-      max-height: 86vh;
+      height: min(86vh, 780px);
       border-radius: 18px;
       overflow:hidden;
-      background: #0b1220;
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 40px 110px rgba(0,0,0,0.55);
+      background:#0b1220;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 40px 120px rgba(0,0,0,0.60);
       position: relative;
     }
-    .lightbox-img{
+    .viewer img{
       width: 100%;
-      height: 86vh;
-      max-height: 86vh;
+      height: 100%;
       object-fit: contain;
       display:block;
-      background: #0b1220;
+      background:#0b1220;
     }
-    .lightbox-close{
+    .close{
       position:absolute;
       top: 12px;
       right: 12px;
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.10);
       color: rgba(255,255,255,0.92);
       cursor:pointer;
-      display:grid;
-      place-items:center;
+      font-weight: 950;
       transition: .2s ease;
-      backdrop-filter: blur(10px);
     }
-    .lightbox-close:hover{
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.14);
-      border-color: rgba(255,255,255,0.28);
-    }
+    .close:hover{ transform: translateY(-2px); background: rgba(255,255,255,0.16); }
 
-    /* ===== RESPONSIVE ===== */
+    /* Responsive */
     @media (max-width: 980px){
-      .hero-content{ grid-template-columns: 1fr; }
-      .hero-showcase{ max-width: 720px; margin: 0 auto; }
+      .hero-grid{ grid-template-columns: 1fr; }
+      .hero{ padding: 70px 0 36px; }
       .hero h1{ font-size: 2.35rem; }
-      .hero h2{ font-size: 1.2rem; }
-      .hero-actions, .hero-meta, .social-links{ justify-content:center; }
-      .hero-text{ text-align:center; }
-
-      .highlights-wrap{ grid-template-columns: 1fr; }
-      .competency-tag{ grid-column: span 6; }
-      .contact-card{ grid-column: span 12; }
+      .showcase{ max-width: 820px; margin: 0 auto; }
+      .skills .skill{ grid-column: span 6; }
+      .contacts .contact{ grid-column: span 12; }
+      .meta{ justify-content:center; }
+      .actions{ justify-content:center; }
+      .chips{ justify-content:center; }
+      .hero .container{ text-align:center; }
     }
-
-    @media (max-width: 768px){
-      nav .container{ padding: 12px 18px; }
-      .hamburger{ display:flex; }
-      .nav-menu{
+    @media (max-width: 780px){
+      .hamburger{ display:block; }
+      .menu{
         position: fixed;
         left: -100%;
         top: 64px;
         width: 100%;
         flex-direction: column;
-        background: rgba(255,255,255,0.96);
-        border-bottom: 1px solid rgba(17,24,39,0.06);
+        background: rgba(255,255,255,0.98);
+        border-bottom: 1px solid rgba(17,24,39,0.07);
         padding: 18px 0;
-        gap: 1rem;
+        gap: 12px;
         transition: .25s ease;
       }
-      .nav-menu.active{ left: 0; }
-      .hero{ padding: 70px 0 34px; }
-      .showcase-img{ height: 220px; }
-      .highlight{ min-height: 380px; }
-      .highlight img{ height: 270px; }
-      .competency-tag{ grid-column: span 12; }
-      section{ padding: 46px 0; }
+      .menu.active{ left: 0; }
+      .skills .skill{ grid-column: span 12; }
+      .shot img{ height: 220px; }
     }
   </style>
 </head>
@@ -700,97 +500,71 @@
   <!-- NAV -->
   <nav>
     <div class="container">
-      <div class="nav-brand" aria-label="Site brand">
-        <span class="dot" aria-hidden="true"></span>
-        Rumi Acharya
-      </div>
+      <div class="brand"><span class="dot"></span>Rumi Acharya</div>
 
-      <ul class="nav-menu" id="navMenu" aria-label="Navigation">
+      <ul class="menu" id="menu">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#highlights">Highlights</a></li>
-        <li><a href="#competencies">Skills</a></li>
-        <li><a href="#publications">Publications</a></li>
+        <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
 
-      <div class="hamburger" id="hamburger" aria-label="Open menu" role="button" tabindex="0">
+      <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
-      </div>
+      </button>
     </div>
   </nav>
 
   <!-- HERO -->
   <section id="home" class="hero">
     <div class="container">
-      <div class="hero-content">
+      <div class="hero-grid">
 
-        <!-- Left -->
-        <div class="hero-text reveal">
+        <div>
           <h1>Rumi Acharya</h1>
           <h2>루미 아차르야</h2>
 
-          <div class="chips" aria-label="Core specialties">
-            <span class="chip"><i class="fas fa-print"></i> 3D Bioprinting (DIW/DLP)</span>
-            <span class="chip"><i class="fas fa-flask"></i> Ion-doped Hydrogels</span>
-            <span class="chip"><i class="fas fa-bolt"></i> Electro/Magnetic Stimulation</span>
-            <span class="chip"><i class="fas fa-bone"></i> Tissue Engineering</span>
+          <div class="chips">
+            <div class="chip">3D Bioprinting (DIW/DLP)</div>
+            <div class="chip">Ion-doped Hydrogels</div>
+            <div class="chip">Electro/Magnetic Stimulation</div>
+            <div class="chip">Tissue Engineering</div>
           </div>
 
-          <div class="hero-meta">
-            <span><i class="fas fa-map-marker-alt"></i> Chuncheon, Republic of Korea</span>
-            <span><i class="fas fa-phone"></i> +82-10-2531-0294</span>
+          <div class="meta">
+            <span><span class="pill-ico">📍</span>Chuncheon, Republic of Korea</span>
+            <span><span class="pill-ico">☎</span>+82-10-2531-0294</span>
           </div>
 
-          <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Get in Touch</a>
-            <a href="https://scholar.google.com/citations?user=d3BaaCoAAAAJ&hl=en" target="_blank" rel="noopener" class="btn btn-secondary">
-              <i class="fas fa-graduation-cap"></i> Google Scholar
-            </a>
-          </div>
-
-          <div class="social-links" aria-label="Social links">
-            <a href="mailto:acharyarumi7@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.researchgate.net/profile/Rumi-Acharya" target="_blank" rel="noopener" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
-            <a href="https://scholar.google.com/citations?user=d3BaaCoAAAAJ&hl=en" target="_blank" rel="noopener" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+          <div class="actions">
+            <a class="btn primary" href="#contact">✉ Get in Touch</a>
+            <a class="btn secondary" target="_blank" rel="noopener"
+               href="https://scholar.google.com/citations?user=d3BaaCoAAAAJ&hl=en">🎓 Google Scholar</a>
           </div>
         </div>
 
-        <!-- Right: WOW big research images (p10 + p12) -->
-        <div class="hero-showcase reveal" aria-label="Research showcase">
-          <div class="showcase-card">
-            <img
-              src="pdf_p10.png"
-              class="showcase-img"
-              alt="Research highlight: Mg–ND/HAp composite scaffold evidence"
-              loading="eager"
-              onerror="this.onerror=null; this.src='https://via.placeholder.com/1200x700/111827/ffffff?text=pdf_p10.png+missing';"
-            />
-            <div class="showcase-overlay" aria-hidden="true"></div>
-            <button class="showcase-btn" type="button" aria-label="Open image" data-lightbox="pdf_p10.png">
-              <i class="fas fa-up-right-and-down-left-from-center"></i>
-            </button>
-            <div class="showcase-label">
-              <div class="title">Mg–ND/HAp Composite: Structural Evidence</div>
-              <div class="tag"><i class="fas fa-microscope"></i> SEM • XRD</div>
+        <!-- BIG research highlights -->
+        <div class="showcase" aria-label="Research highlights">
+          <div class="shot">
+            <img src="pdf_p10.png" alt="Mg–ND/HAp Composite: Structural Evidence"
+                 onerror="this.onerror=null; this.src='https://via.placeholder.com/1400x800/111827/ffffff?text=pdf_p10.png+missing';">
+            <div class="overlay"></div>
+            <button class="open" type="button" data-open="pdf_p10.png" aria-label="Open image">⤢</button>
+            <div class="caption">
+              <div class="t">Mg–ND/HAp Composite: Structural Evidence</div>
+              <div class="badge">SEM • XRD</div>
             </div>
           </div>
 
-          <div class="showcase-card">
-            <img
-              src="pdf_p12.png"
-              class="showcase-img"
-              alt="Research highlight: 3D printing and hydrogel fabrication workflow"
-              loading="eager"
-              onerror="this.onerror=null; this.src='https://via.placeholder.com/1200x700/111827/ffffff?text=pdf_p12.png+missing';"
-            />
-            <div class="showcase-overlay" aria-hidden="true"></div>
-            <button class="showcase-btn" type="button" aria-label="Open image" data-lightbox="pdf_p12.png">
-              <i class="fas fa-up-right-and-down-left-from-center"></i>
-            </button>
-            <div class="showcase-label">
-              <div class="title">3D Printing: Fabrication Workflow + Morphology</div>
-              <div class="tag"><i class="fas fa-print"></i> DIW Process</div>
+          <div class="shot">
+            <img src="pdf_p12.png" alt="3D Printing Workflow + Morphology"
+                 onerror="this.onerror=null; this.src='https://via.placeholder.com/1400x800/111827/ffffff?text=pdf_p12.png+missing';">
+            <div class="overlay"></div>
+            <button class="open" type="button" data-open="pdf_p12.png" aria-label="Open image">⤢</button>
+            <div class="caption">
+              <div class="t">3D Printing: Fabrication Workflow + Morphology</div>
+              <div class="badge">DIW Process</div>
             </div>
           </div>
         </div>
@@ -802,9 +576,9 @@
   <!-- ABOUT -->
   <section id="about">
     <div class="container">
-      <h2 class="section-title reveal">Professional Summary</h2>
+      <h2 class="title">Professional Summary</h2>
 
-      <div class="summary-box card reveal">
+      <div class="summary card">
         <p>
           Multidisciplinary researcher specializing in <strong>ion-doped bioceramics</strong> and <strong>electro/magneto-responsive hydrogel systems</strong>
           for bone and soft-tissue regeneration. Experienced in <strong>3D bioprinting (DIW/DLP)</strong>, nanocomposite design, microneedle platforms,
@@ -818,152 +592,83 @@
     </div>
   </section>
 
-  <!-- BIG RESEARCH HIGHLIGHTS (p10 + p12) -->
-  <section id="highlights" class="bg-light">
+  <!-- HIGHLIGHTS SECTION (big, clean) -->
+  <section id="highlights" class="bg2">
     <div class="container">
-      <h2 class="section-title reveal">Research Highlights</h2>
-      <p class="subtext-center reveal">
-        Two high-impact visuals shown in a clean, full-size layout. Click to open in full screen.
+      <h2 class="title">Research Highlights</h2>
+      <p class="sub">
+        Two key figures displayed in full, high-impact layout. Click ⤢ to view fullscreen.
       </p>
 
-      <div class="highlights-wrap">
-        <article class="highlight reveal">
-          <button class="open" type="button" aria-label="Open highlight image" data-lightbox="pdf_p10.png">
-            <i class="fas fa-up-right-and-down-left-from-center"></i>
-          </button>
-          <div class="shade" aria-hidden="true"></div>
-          <img
-            src="pdf_p10.png"
-            alt="Mg–ND/HAp composite scaffold: synthesis and structural evidence"
-            loading="lazy"
-            onerror="this.onerror=null; this.src='https://via.placeholder.com/1400x900/111827/ffffff?text=pdf_p10.png+missing';"
-          />
-          <div class="body">
-            <div class="kicker">
-              <span class="badge"><i class="fas fa-bone"></i> Chapter 2</span>
-              <span class="badge"><i class="fas fa-shield-virus"></i> Antibacterial scaffold</span>
-            </div>
-            <h3>Mg–ND/HAp Composite Scaffold: Synthesis + Structural Validation</h3>
-            <p>Microstructural and crystallographic evidence supporting composite formation and scaffold integrity (SEM/XRD).</p>
+      <div class="showcase">
+        <div class="shot">
+          <img src="pdf_p10.png" alt="Research Highlight: Mg–ND/HAp composite scaffold"
+               onerror="this.onerror=null; this.src='https://via.placeholder.com/1400x800/111827/ffffff?text=pdf_p10.png+missing';">
+          <div class="overlay"></div>
+          <button class="open" type="button" data-open="pdf_p10.png" aria-label="Open image">⤢</button>
+          <div class="caption">
+            <div class="t">Mg–ND/HAp Composite Scaffold: Validation & Evidence</div>
+            <div class="badge">Chapter 2</div>
           </div>
-        </article>
+        </div>
 
-        <article class="highlight reveal">
-          <button class="open" type="button" aria-label="Open highlight image" data-lightbox="pdf_p12.png">
-            <i class="fas fa-up-right-and-down-left-from-center"></i>
-          </button>
-          <div class="shade" aria-hidden="true"></div>
-          <img
-            src="pdf_p12.png"
-            alt="3D printing workflow and hydrogel fabrication: multistep process and morphology"
-            loading="lazy"
-            onerror="this.onerror=null; this.src='https://via.placeholder.com/1400x900/111827/ffffff?text=pdf_p12.png+missing';"
-          />
-          <div class="body">
-            <div class="kicker">
-              <span class="badge"><i class="fas fa-print"></i> Printing workflow</span>
-              <span class="badge"><i class="fas fa-layer-group"></i> Architecture + SEM</span>
-            </div>
-            <h3>3D Printing + Multistep Hydrogel Fabrication</h3>
-            <p>End-to-end workflow showing fabrication steps, scaffold architectures, and morphology across conditions.</p>
+        <div class="shot">
+          <img src="pdf_p12.png" alt="Research Highlight: 3D printing workflow and morphology"
+               onerror="this.onerror=null; this.src='https://via.placeholder.com/1400x800/111827/ffffff?text=pdf_p12.png+missing';">
+          <div class="overlay"></div>
+          <button class="open" type="button" data-open="pdf_p12.png" aria-label="Open image">⤢</button>
+          <div class="caption">
+            <div class="t">3D Printing Workflow + Morphology Across Conditions</div>
+            <div class="badge">Printing</div>
           </div>
-        </article>
+        </div>
       </div>
+
     </div>
   </section>
 
   <!-- SKILLS -->
-  <section id="competencies">
+  <section id="skills">
     <div class="container">
-      <h2 class="section-title reveal">Core Competencies</h2>
+      <h2 class="title">Core Competencies</h2>
 
-      <div class="competencies-grid">
-        <div class="competency-tag reveal"><i class="fas fa-print"></i> 3D Bioprinting (DIW/DLP)</div>
-        <div class="competency-tag reveal"><i class="fas fa-flask"></i> Ion-doped Hydrogel Formulation</div>
-        <div class="competency-tag reveal"><i class="fas fa-syringe"></i> Microneedle Platforms</div>
-        <div class="competency-tag reveal"><i class="fas fa-microscope"></i> Cell Culture (hBMSCs, HaCaT)</div>
-        <div class="competency-tag reveal"><i class="fas fa-chart-line"></i> Rheology & Mechanical Testing</div>
-        <div class="competency-tag reveal"><i class="fas fa-atom"></i> ICP-OES Ion Release</div>
-        <div class="competency-tag reveal"><i class="fas fa-eye"></i> SEM/EDS • FTIR • XRD</div>
-        <div class="competency-tag reveal"><i class="fas fa-image"></i> Confocal/Fluorescence Microscopy</div>
-        <div class="competency-tag reveal"><i class="fas fa-bolt"></i> Electro/Magnetic Stimulation</div>
-        <div class="competency-tag reveal"><i class="fas fa-layer-group"></i> Nanocomposite Hydrogels</div>
-        <div class="competency-tag reveal"><i class="fas fa-clipboard-check"></i> GLP & ISO 13485 (QMS)</div>
-        <div class="competency-tag reveal"><i class="fas fa-laptop-code"></i> Data Visualization</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PUBLICATIONS -->
-  <section id="publications" class="bg-light">
-    <div class="container">
-      <h2 class="section-title reveal">Publications (Selected)</h2>
-
-      <div class="pub-wrap">
-        <div class="pub-section reveal">
-          <h3>First Author</h3>
-
-          <div class="pub-item card">
-            <span class="pub-badge">2025</span>
-            <div class="pub-title">3D-printed magnesium/nanodiamond dual-doped hydroxyapatite composite hydrogels with antibacterial and in vitro bioactive properties for bone tissue engineering</div>
-            <div class="pub-venue">Journal of the American Ceramic Society</div>
-          </div>
-
-          <div class="pub-item card">
-            <span class="pub-badge">2025</span>
-            <div class="pub-title">Physical stimuli-responsive DNA hydrogels: design, fabrication strategies, and biomedical applications</div>
-            <div class="pub-venue">Journal of Nanobiotechnology</div>
-          </div>
-
-          <div class="pub-item card">
-            <span class="pub-badge">2024</span>
-            <div class="pub-title">Single-Walled Carbon Nanotube-Based Optical Nano/Biosensors for Biomedical Applications</div>
-            <div class="pub-venue">Advanced Materials Technologies</div>
-          </div>
-
-          <div class="pub-item card">
-            <span class="pub-badge">2023</span>
-            <div class="pub-title">A review on electroactive polymer–metal composites: Development and applications for tissue regeneration</div>
-            <div class="pub-venue">Journal of Functional Biomaterials</div>
-          </div>
-        </div>
-
-        <div class="pub-section reveal">
-          <h3>Profiles</h3>
-          <div class="pub-item card">
-            <span class="pub-badge">Links</span>
-            <div class="pub-title">Google Scholar & ResearchGate</div>
-            <div class="pub-venue">
-              <a href="https://scholar.google.com/citations?user=d3BaaCoAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
-              &nbsp;•&nbsp;
-              <a href="https://www.researchgate.net/profile/Rumi-Acharya" target="_blank" rel="noopener">ResearchGate</a>
-            </div>
-          </div>
-        </div>
+      <div class="skills">
+        <div class="skill">3D Bioprinting (DIW/DLP)</div>
+        <div class="skill">Ion-doped Hydrogel Formulation</div>
+        <div class="skill">Microneedle Platforms</div>
+        <div class="skill">Cell Culture (hBMSCs, HaCaT)</div>
+        <div class="skill">Rheology & Mechanical Testing</div>
+        <div class="skill">ICP-OES Ion Release</div>
+        <div class="skill">SEM/EDS • FTIR • XRD</div>
+        <div class="skill">Confocal/Fluorescence Microscopy</div>
+        <div class="skill">Electro/Magnetic Stimulation</div>
+        <div class="skill">Nanocomposite Hydrogels</div>
+        <div class="skill">GLP & ISO 13485 (QMS)</div>
+        <div class="skill">Data Visualization</div>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact">
+  <section id="contact" class="bg2">
     <div class="container">
-      <h2 class="section-title reveal">Get in Touch</h2>
+      <h2 class="title">Get in Touch</h2>
 
-      <div class="contact-grid">
-        <div class="contact-card card reveal">
-          <i class="fas fa-envelope"></i>
+      <div class="contacts">
+        <div class="contact card">
+          <div class="icon">✉</div>
           <h3>Email</h3>
           <p><a href="mailto:acharyarumi7@gmail.com">acharyarumi7@gmail.com</a></p>
         </div>
 
-        <div class="contact-card card reveal">
-          <i class="fas fa-phone"></i>
+        <div class="contact card">
+          <div class="icon">☎</div>
           <h3>Phone</h3>
           <p>+82-10-2531-0294</p>
         </div>
 
-        <div class="contact-card card reveal">
-          <i class="fas fa-map-marker-alt"></i>
+        <div class="contact card">
+          <div class="icon">📍</div>
           <h3>Location</h3>
           <p>Chuncheon<br>Republic of Korea</p>
         </div>
@@ -971,14 +676,13 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container">
-      <div class="footer-inner">
+      <div class="foot">
         <p>© 2025 Rumi Acharya. All rights reserved.</p>
-        <div class="footer-links">
-          <a href="https://scholar.google.com/citations?user=d3BaaCoAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
-          <a href="https://www.researchgate.net/profile/Rumi-Acharya" target="_blank" rel="noopener">ResearchGate</a>
+        <div>
+          <a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=d3BaaCoAAAAJ&hl=en">Google Scholar</a>
+          <a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Rumi-Acharya">ResearchGate</a>
         </div>
       </div>
     </div>
@@ -986,68 +690,49 @@
 
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
-    <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Image viewer">
-      <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close">
-        <i class="fas fa-xmark"></i>
-      </button>
-      <img class="lightbox-img" id="lightboxImg" alt="Expanded figure preview" />
+    <div class="viewer" role="dialog" aria-modal="true" aria-label="Image viewer">
+      <button class="close" id="closeBtn" type="button" aria-label="Close">✕</button>
+      <img id="viewerImg" alt="Fullscreen preview" />
     </div>
   </div>
 
   <script>
-    // Mobile nav
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('navMenu');
-    function toggleMenu(){ navMenu.classList.toggle('active'); }
-    hamburger.addEventListener('click', toggleMenu);
-    hamburger.addEventListener('keydown', (e) => {
-      if(e.key === 'Enter' || e.key === ' ') toggleMenu();
-    });
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-      link.addEventListener('click', () => navMenu.classList.remove('active'));
-    });
+    // Run after DOM is ready
+    (function(){
+      const menu = document.getElementById('menu');
+      const hamburger = document.getElementById('hamburger');
 
-    // WOW-like reveals (IntersectionObserver)
-    const reveals = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
-        }
+      hamburger.addEventListener('click', () => menu.classList.toggle('active'));
+      document.querySelectorAll('#menu a').forEach(a => {
+        a.addEventListener('click', () => menu.classList.remove('active'));
       });
-    }, { threshold: 0.12 });
-    reveals.forEach(el => io.observe(el));
 
-    // Lightbox for big images
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxClose = document.getElementById('lightboxClose');
+      const lightbox = document.getElementById('lightbox');
+      const viewerImg = document.getElementById('viewerImg');
+      const closeBtn = document.getElementById('closeBtn');
 
-    function openLightbox(src){
-      lightboxImg.src = src;
-      lightbox.classList.add('open');
-      lightbox.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeLightbox(){
-      lightbox.classList.remove('open');
-      lightbox.setAttribute('aria-hidden', 'true');
-      lightboxImg.src = '';
-      document.body.style.overflow = '';
-    }
+      function openBox(src){
+        viewerImg.src = src;
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeBox(){
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden','true');
+        viewerImg.src = '';
+        document.body.style.overflow = '';
+      }
 
-    document.querySelectorAll('[data-lightbox]').forEach(btn => {
-      btn.addEventListener('click', () => openLightbox(btn.getAttribute('data-lightbox')));
-    });
+      // Open on any button with data-open
+      document.querySelectorAll('[data-open]').forEach(btn => {
+        btn.addEventListener('click', () => openBox(btn.getAttribute('data-open')));
+      });
 
-    lightboxClose.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', (e) => {
-      if(e.target === lightbox) closeLightbox();
-    });
-    document.addEventListener('keydown', (e) => {
-      if(e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
-    });
+      closeBtn.addEventListener('click', closeBox);
+      lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeBox(); });
+      document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeBox(); });
+    })();
   </script>
 
 </body>
