@@ -9,571 +9,574 @@
   <meta name="description" content="Rumi Acharya — Biomaterials, 3D bioprinting, smart hydrogels, ion-doped bioceramics, and electromagnetic-stimulus regenerative platforms." />
   <meta name="theme-color" content="#8b5cf6" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *{ margin:0; padding:0; box-sizing:border-box; }
     :root{
       --primary:#8b5cf6;
       --secondary:#6d28d9;
       --accent:#a78bfa;
-      --text-dark:#111827;
-      --text-light:#6b7280;
-      --bg-light:#f8fafc;
+      --text-dark:#0b1220;
+      --text-light:#556070;
+      --bg-light:#f7f8ff;
       --white:#ffffff;
+
       --shadow: 0 12px 34px rgba(17,24,39,0.10);
-      --shadow-2: 0 18px 45px rgba(17,24,39,0.14);
+      --shadow-2: 0 18px 55px rgba(17,24,39,0.16);
       --radius: 18px;
+
+      --glass: rgba(255,255,255,0.10);
+      --glass-border: rgba(255,255,255,0.22);
+
+      --max: 1180px;
     }
+
     html{ scroll-behavior:smooth; }
     body{
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
+      font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--text-dark);
       background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
+
+    /* Layout */
     .container{
-      max-width: 1280px;
+      max-width: var(--max);
       margin: 0 auto;
       padding: 0 22px;
     }
 
+    /* Smooth reveal (WOW-like) */
+    .reveal{
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .6s ease, transform .6s ease;
+      will-change: opacity, transform;
+    }
+    .reveal.in{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* ===== NAV ===== */
     nav{
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(17,24,39,0.06);
       position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
+      top:0; left:0; right:0;
+      z-index: 9999;
+      background: rgba(255,255,255,0.78);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(17,24,39,0.06);
     }
     nav .container{
       display:flex;
-      justify-content:space-between;
       align-items:center;
+      justify-content:space-between;
       padding: 14px 22px;
+      gap: 16px;
     }
     .nav-brand{
-      font-size: 1.22rem;
-      font-weight: 800;
+      font-weight: 900;
+      letter-spacing: -0.2px;
       color: var(--primary);
-      letter-spacing: 0.2px;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      user-select:none;
+      white-space: nowrap;
+    }
+    .nav-brand .dot{
+      width: 10px; height:10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), #ec4899);
+      box-shadow: 0 10px 22px rgba(139,92,246,0.35);
     }
     .nav-menu{
-      display:flex;
       list-style:none;
-      gap: 1.6rem;
+      display:flex;
       align-items:center;
+      gap: 1.25rem;
     }
     .nav-menu a{
       text-decoration:none;
-      color: var(--text-dark);
-      font-weight: 650;
+      color: rgba(11,18,32,0.92);
+      font-weight: 750;
       font-size: 0.95rem;
-      opacity: 0.9;
-      transition: 0.2s ease;
+      transition: .2s ease;
+      opacity: .92;
     }
     .nav-menu a:hover{ color: var(--primary); opacity: 1; }
-    .hamburger{ display:none; flex-direction:column; cursor:pointer; }
-    .hamburger span{ width:25px; height:3px; background: var(--text-dark); margin:3px 0; border-radius: 4px; transition:0.2s; }
+    .hamburger{
+      display:none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(17,24,39,0.08);
+      background: rgba(255,255,255,0.70);
+    }
+    .hamburger span{
+      width: 22px; height: 2px;
+      background: rgba(11,18,32,0.9);
+      border-radius: 999px;
+      transition: .2s ease;
+    }
 
     /* ===== HERO ===== */
     .hero{
-      background: radial-gradient(1100px 600px at 15% 35%, rgba(255,255,255,0.18), transparent 60%),
-                  linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-      color: var(--white);
-      padding: 92px 0 54px;
       margin-top: 64px;
-      overflow:hidden;
+      padding: 82px 0 40px;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(1100px 600px at 12% 28%, rgba(255,255,255,0.18), transparent 60%),
+        radial-gradient(900px 500px at 85% 30%, rgba(167,139,250,0.22), transparent 60%),
+        linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(600px 400px at 20% 40%, rgba(255,255,255,0.12), transparent 70%),
+        radial-gradient(500px 350px at 80% 60%, rgba(255,255,255,0.10), transparent 70%);
+      pointer-events:none;
+      filter: blur(0.2px);
+      opacity: .9;
     }
     .hero-content{
+      position: relative;
       display:grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 3rem;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
       align-items:center;
     }
-    .hero-text h1{
-      font-size: 3.1rem;
-      font-weight: 850;
+
+    .hero h1{
+      font-size: 3.05rem;
+      font-weight: 950;
+      letter-spacing: -0.6px;
       line-height: 1.05;
-      margin-bottom: 0.55rem;
-      letter-spacing: -0.4px;
+      margin-bottom: 10px;
     }
-    .hero-text h2{
-      font-size: 1.55rem;
+    .hero h2{
+      font-size: 1.35rem;
+      font-weight: 850;
+      opacity: .96;
+      margin-bottom: 10px;
+      letter-spacing: -0.2px;
+    }
+    .hero .chips{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 14px 0 16px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
       font-weight: 750;
-      margin-bottom: 0.85rem;
-      opacity: 0.96;
-    }
-    .hero-specialties{
-      font-size: 1.05rem;
-      opacity: 0.92;
-      margin-bottom: 1.1rem;
-      font-weight: 520;
+      font-size: 0.92rem;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.14);
+      backdrop-filter: blur(10px);
+      white-space: nowrap;
     }
     .hero-meta{
       display:flex;
-      flex-wrap:wrap;
-      gap: 14px 20px;
-      margin: 1.1rem 0 1.2rem;
-      opacity: 0.95;
+      flex-wrap: wrap;
+      gap: 12px 18px;
+      margin: 12px 0 18px;
+      opacity: .96;
     }
     .hero-meta span{
       display:inline-flex;
       align-items:center;
-      gap: 10px;
-      font-size: 0.98rem;
-      font-weight: 650;
+      gap: 9px;
+      font-weight: 750;
+      font-size: 0.96rem;
     }
-    .hero-buttons{
+
+    .hero-actions{
       display:flex;
-      gap: 0.9rem;
-      margin: 1.35rem 0 1.05rem;
-      flex-wrap:wrap;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+      align-items:center;
     }
     .btn{
-      padding: 12px 20px;
-      border-radius: 999px;
       text-decoration:none;
-      font-weight: 750;
-      transition: all 0.22s ease;
+      border-radius: 999px;
+      padding: 12px 18px;
       display:inline-flex;
       align-items:center;
       gap: 10px;
+      font-weight: 850;
       font-size: 0.95rem;
+      transition: .22s ease;
       white-space: nowrap;
     }
     .btn-primary{
       background: var(--white);
       color: var(--primary);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.18);
     }
-    .btn-primary:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 14px 32px rgba(0,0,0,0.22);
-    }
+    .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 20px 44px rgba(0,0,0,0.22); }
     .btn-secondary{
-      background: transparent;
       color: var(--white);
-      border: 2px solid rgba(255,255,255,0.92);
+      border: 2px solid rgba(255,255,255,0.88);
+      background: transparent;
     }
     .btn-secondary:hover{
       background: var(--white);
       color: var(--primary);
       transform: translateY(-2px);
     }
+
     .social-links{
       display:flex;
-      gap: 14px;
-      align-items:center;
-      margin-top: 10px;
+      gap: 12px;
+      margin-top: 14px;
     }
     .social-links a{
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
+      width: 40px; height: 40px;
+      border-radius: 14px;
       display:grid;
       place-items:center;
       color: var(--white);
-      text-decoration:none;
-      border: 1px solid rgba(255,255,255,0.30);
       background: rgba(255,255,255,0.10);
-      transition: 0.2s ease;
-      font-size: 1.15rem;
+      border: 1px solid rgba(255,255,255,0.26);
+      transition: .2s ease;
+      text-decoration:none;
     }
     .social-links a:hover{
       transform: translateY(-2px);
       background: rgba(255,255,255,0.18);
-      border-color: rgba(255,255,255,0.45);
-    }
-    .hero-photo-wrap{
-      display:flex;
-      justify-content:flex-end;
-      align-items:center;
-    }
-    .hero-photo{
-      width: 280px;
-      height: 280px;
-      border-radius: 999px;
-      border: 6px solid rgba(255,255,255,0.92);
-      box-shadow: 0 22px 55px rgba(0,0,0,0.28);
-      object-fit: cover;
-      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.40);
     }
 
-    /* ===== SECTIONS ===== */
+    /* Hero card: two big images (WOW) */
+    .hero-showcase{
+      display:flex;
+      flex-direction: column;
+      gap: 14px;
+      justify-content: center;
+      align-items: stretch;
+    }
+    .showcase-card{
+      border-radius: 26px;
+      overflow:hidden;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.08);
+      box-shadow: 0 26px 70px rgba(0,0,0,0.28);
+      transform: translateZ(0);
+    }
+    .showcase-card:hover{ box-shadow: 0 34px 90px rgba(0,0,0,0.34); }
+    .showcase-img{
+      width: 100%;
+      height: 255px;
+      object-fit: cover;
+      display:block;
+      transform: scale(1.02);
+      transition: transform .45s ease;
+      background: rgba(0,0,0,0.06);
+    }
+    .showcase-card:hover .showcase-img{ transform: scale(1.06); }
+    .showcase-overlay{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.55));
+      pointer-events:none;
+    }
+    .showcase-label{
+      position:absolute;
+      left: 14px;
+      bottom: 14px;
+      right: 14px;
+      display:flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 12px;
+      pointer-events:none;
+    }
+    .showcase-label .title{
+      font-weight: 950;
+      letter-spacing: -0.2px;
+      line-height: 1.2;
+      font-size: 1.02rem;
+      text-shadow: 0 10px 22px rgba(0,0,0,0.45);
+    }
+    .showcase-label .tag{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.22);
+      font-weight: 850;
+      font-size: 0.85rem;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.18);
+      white-space: nowrap;
+    }
+    .showcase-btn{
+      position:absolute;
+      top: 14px;
+      right: 14px;
+      pointer-events:auto;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.95);
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      transition: .2s ease;
+      backdrop-filter: blur(10px);
+    }
+    .showcase-btn:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.20);
+      border-color: rgba(255,255,255,0.40);
+    }
+
+    /* ===== SECTION BASE ===== */
     section{ padding: 56px 0; }
     .bg-light{ background: var(--bg-light); }
 
     .section-title{
-      font-size: 2.1rem;
-      font-weight: 900;
+      font-size: 2.05rem;
+      font-weight: 950;
       text-align:center;
-      margin-bottom: 1.2rem;
-      letter-spacing: -0.3px;
+      letter-spacing: -0.4px;
+      margin-bottom: 12px;
     }
     .section-title::after{
-      content:'';
+      content:"";
       display:block;
-      width: 72px;
+      width: 74px;
       height: 4px;
-      background: var(--primary);
-      margin: 0.8rem auto 0;
       border-radius: 999px;
+      margin: 12px auto 0;
+      background: linear-gradient(90deg, var(--primary), #ec4899);
     }
     .subtext-center{
-      max-width: 980px;
-      margin: 0 auto 1.8rem;
+      max-width: 920px;
+      margin: 0 auto 20px;
       text-align:center;
       color: var(--text-light);
-      font-weight: 520;
+      font-weight: 540;
     }
 
     .card{
       background: var(--white);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
       border: 1px solid rgba(17,24,39,0.06);
+      box-shadow: var(--shadow);
     }
 
     /* ===== ABOUT ===== */
     .summary-box{
-      padding: 24px;
-      border-left: 6px solid var(--primary);
-      max-width: 1100px;
+      max-width: 980px;
       margin: 0 auto;
+      padding: 22px;
+      border-left: 6px solid var(--primary);
     }
     .summary-box p{
       color: var(--text-light);
-      font-size: 1.04rem;
-      line-height: 1.8;
+      font-weight: 540;
+      font-size: 1.02rem;
+      line-height: 1.85;
     }
     .summary-box p + p{ margin-top: 12px; }
 
-    /* ===== QUICK STATS (NEW) ===== */
-    .stats-grid{
+    /* ===== HIGHLIGHTS (BIG IMAGES) ===== */
+    .highlights-wrap{
+      max-width: var(--max);
+      margin: 18px auto 0;
       display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
-      max-width: 1100px;
-      margin: 16px auto 0;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
     }
-    .stat{
-      grid-column: span 4;
-      padding: 18px;
-      text-align:left;
-      transition: 0.2s ease;
+    .highlight{
+      border-radius: 26px;
+      overflow:hidden;
+      position:relative;
+      transition: transform .22s ease, box-shadow .22s ease;
+      box-shadow: var(--shadow-2);
+      border: 1px solid rgba(17,24,39,0.06);
+      background: #fff;
+      min-height: 420px;
     }
-    .stat:hover{ transform: translateY(-3px); box-shadow: var(--shadow-2); }
-    .stat .kicker{
-      display:inline-flex;
-      gap: 10px;
+    .highlight:hover{ transform: translateY(-4px); }
+    .highlight img{
+      width:100%;
+      height: 320px;
+      object-fit: cover;
+      display:block;
+      background: rgba(17,24,39,0.04);
+      transform: scale(1.02);
+      transition: transform .45s ease;
+    }
+    .highlight:hover img{ transform: scale(1.06); }
+    .highlight .body{
+      padding: 14px 16px 18px;
+    }
+    .highlight .kicker{
+      display:flex;
       align-items:center;
-      font-weight: 850;
+      justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 0.82rem;
       color: var(--primary);
+      background: rgba(139,92,246,0.10);
+      border: 1px solid rgba(139,92,246,0.22);
+    }
+    .highlight h3{
+      font-size: 1.12rem;
+      font-weight: 950;
+      letter-spacing: -0.2px;
+      line-height: 1.25;
       margin-bottom: 6px;
     }
-    .stat .big{
-      font-size: 1.55rem;
-      font-weight: 950;
-      letter-spacing: -0.3px;
-      margin-bottom: 2px;
-      color: var(--text-dark);
-    }
-    .stat .small{
+    .highlight p{
       color: var(--text-light);
-      font-weight: 550;
-      line-height: 1.7;
-      font-size: 0.96rem;
+      font-weight: 560;
+      line-height: 1.75;
+      font-size: 0.97rem;
+    }
+    .highlight .open{
+      position:absolute;
+      top: 14px;
+      right: 14px;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display:grid;
+      place-items:center;
+      border: 1px solid rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px);
+      cursor:pointer;
+      transition: .2s ease;
+      color: rgba(255,255,255,0.96);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.20);
+    }
+    .highlight .open:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.22);
+      border-color: rgba(255,255,255,0.40);
+    }
+    .highlight .shade{
+      position:absolute;
+      inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.00), rgba(0,0,0,0.28));
+      pointer-events:none;
     }
 
-    /* ===== COMPETENCIES ===== */
+    /* ===== SKILLS ===== */
     .competencies-grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 14px;
+      max-width: var(--max);
+      margin: 0 auto;
     }
     .competency-tag{
       grid-column: span 4;
-      padding: 14px 14px;
+      padding: 14px;
       border-radius: 14px;
       background: var(--white);
       border: 1px solid rgba(17,24,39,0.06);
       box-shadow: 0 8px 22px rgba(17,24,39,0.07);
-      font-weight: 700;
-      color: var(--text-dark);
+      font-weight: 780;
+      color: rgba(11,18,32,0.92);
       display:flex;
-      align-items:center;
       gap: 10px;
+      align-items:center;
       justify-content:center;
       text-align:center;
-      transition: 0.2s ease;
+      transition: .2s ease;
     }
     .competency-tag i{ color: var(--primary); }
     .competency-tag:hover{
       transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(139,92,246,0.18);
       border-color: rgba(139,92,246,0.35);
-    }
-
-    /* ===== EXPERIENCE ===== */
-    .experience-wrap{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .experience-item{
-      padding: 20px;
-      border-left: 6px solid var(--primary);
-    }
-    .exp-header{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-    }
-    .exp-title{ font-size: 1.25rem; font-weight: 900; color: var(--primary); }
-    .exp-org{ font-weight: 680; color: var(--text-dark); opacity: 0.95; margin-top: 2px; }
-    .exp-date{
-      font-weight: 800;
-      color: var(--text-light);
-      background: rgba(17,24,39,0.04);
-      border: 1px solid rgba(17,24,39,0.06);
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 0.92rem;
-    }
-    .experience-item ul{ list-style:none; margin-top: 10px; }
-    .experience-item li{
-      padding: 7px 0;
-      color: var(--text-light);
-      padding-left: 18px;
-      position: relative;
-      font-weight: 520;
-    }
-    .experience-item li::before{
-      content:'▸';
-      position:absolute;
-      left:0;
-      color: var(--primary);
-      font-weight: 950;
-    }
-
-    /* ===== RESEARCH OVERVIEW (NEW) ===== */
-    .pillars{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 16px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .pillar{
-      grid-column: span 4;
-      padding: 18px;
-      transition: 0.2s ease;
-    }
-    .pillar:hover{ transform: translateY(-3px); box-shadow: var(--shadow-2); }
-    .pillar .top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-    .pill{
-      display:inline-block;
-      background: rgba(139,92,246,0.12);
-      color: var(--primary);
-      font-weight: 900;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 0.82rem;
-    }
-    .pillar h3{
-      font-size: 1.08rem;
-      font-weight: 950;
-      margin-bottom: 8px;
-    }
-    .pillar p{
-      color: var(--text-light);
-      font-weight: 550;
-      line-height: 1.75;
-      font-size: 0.98rem;
-    }
-    .pillar ul{
-      margin-top: 10px;
-      list-style:none;
-    }
-    .pillar li{
-      color: var(--text-light);
-      font-weight: 550;
-      padding-left: 16px;
-      position:relative;
-      margin: 7px 0;
-      line-height: 1.6;
-    }
-    .pillar li::before{
-      content:'•';
-      position:absolute;
-      left:0;
-      color: var(--primary);
-      font-weight: 950;
-    }
-
-    /* ===== FIGURE GALLERY (NEW, FROM PDF) ===== */
-    .gallery-grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 16px;
-      align-items: stretch;
-    }
-    .figure-card{
-      grid-column: span 6;
-      overflow:hidden;
-      transition: 0.2s ease;
-    }
-    .figure-card:hover{ transform: translateY(-3px); box-shadow: var(--shadow-2); }
-    .figure-img{
-      width:100%;
-      height: 340px;
-      object-fit: cover;
-      display:block;
-      background: rgba(17,24,39,0.04);
-    }
-    .figure-body{ padding: 14px 16px 18px; }
-    .figure-title{
-      font-size: 1.02rem;
-      font-weight: 950;
-      margin-bottom: 6px;
-      color: var(--text-dark);
-      line-height: 1.35;
-    }
-    .figure-desc{
-      color: var(--text-light);
-      font-weight: 550;
-      line-height: 1.7;
-      font-size: 0.96rem;
-    }
-
-    /* ===== PROJECTS ===== */
-    .projects-grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 16px;
-    }
-    .project-card{
-      grid-column: span 6;
-      padding: 18px;
-      transition: 0.2s ease;
-    }
-    .project-card:hover{
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-2);
-    }
-    .project-icon{
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      display:grid;
-      place-items:center;
-      background: rgba(139,92,246,0.12);
-      color: var(--primary);
-      font-size: 1.35rem;
-      margin-bottom: 10px;
-    }
-    .project-card h3{
-      font-size: 1.1rem;
-      margin-bottom: 8px;
-      font-weight: 950;
-    }
-    .project-card p{
-      color: var(--text-light);
-      font-weight: 550;
-      line-height: 1.75;
+      box-shadow: 0 14px 34px rgba(139,92,246,0.16);
     }
 
     /* ===== PUBLICATIONS ===== */
-    .pub-wrap{ max-width: 1100px; margin: 0 auto; }
-    .pub-section{ margin-top: 12px; margin-bottom: 22px; }
+    .pub-wrap{ max-width: 980px; margin: 0 auto; }
+    .pub-section{ margin-top: 12px; margin-bottom: 18px; }
     .pub-section h3{
-      font-size: 1.25rem;
-      color: var(--primary);
-      margin: 14px 0 12px;
-      text-align:left;
+      font-size: 1.2rem;
       font-weight: 950;
+      color: var(--primary);
+      margin: 12px 0 10px;
     }
     .pub-item{
-      padding: 14px 14px;
+      padding: 14px;
       border-left: 5px solid var(--primary);
       margin-bottom: 12px;
-      transition: 0.2s ease;
+      transition: .2s ease;
     }
-    .pub-item:hover{ transform: translateX(4px); box-shadow: 0 12px 30px rgba(139,92,246,0.12); }
+    .pub-item:hover{ transform: translateX(4px); box-shadow: 0 14px 34px rgba(139,92,246,0.12); }
     .pub-badge{
       display:inline-block;
       background: var(--primary);
-      color: var(--white);
+      color: #fff;
       padding: 4px 10px;
       border-radius: 999px;
       font-size: 0.78rem;
       font-weight: 950;
       margin-bottom: 8px;
     }
-    .pub-title{ font-weight: 800; color: var(--text-dark); margin-bottom: 6px; }
-    .pub-venue{ color: var(--text-light); font-style: italic; font-size: 0.95rem; font-weight: 550; }
-
-    /* ===== EDUCATION ===== */
-    .education-grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 16px;
-    }
-    .edu-card{
-      grid-column: span 4;
-      padding: 18px;
-      transition: 0.2s ease;
-    }
-    .edu-card:hover{ transform: translateY(-3px); box-shadow: var(--shadow-2); }
-    .edu-icon{
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      display:grid;
-      place-items:center;
-      background: rgba(139,92,246,0.12);
-      color: var(--primary);
-      font-size: 1.35rem;
-      margin-bottom: 10px;
-    }
-    .edu-card h3{ font-size: 1.05rem; margin-bottom: 6px; font-weight: 950; }
-    .edu-institution{ color: var(--primary); font-weight: 900; margin-bottom: 3px; }
-    .edu-date{ color: var(--text-light); font-weight: 700; }
-    .edu-thesis{ margin-top: 10px; color: var(--text-light); font-size: 0.95rem; line-height: 1.7; font-style: italic; font-weight: 550; }
+    .pub-title{ font-weight: 850; margin-bottom: 6px; }
+    .pub-venue{ color: var(--text-light); font-style: italic; font-weight: 560; }
 
     /* ===== CONTACT ===== */
     .contact-grid{
+      max-width: var(--max);
+      margin: 0 auto;
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 16px;
-      max-width: 1100px;
-      margin: 0 auto;
     }
     .contact-card{
       grid-column: span 4;
       padding: 18px;
       text-align:center;
-      transition: 0.2s ease;
+      transition: .2s ease;
     }
     .contact-card:hover{ transform: translateY(-3px); box-shadow: var(--shadow-2); }
-    .contact-card i{ font-size: 1.8rem; color: var(--primary); margin-bottom: 10px; }
-    .contact-card h3{ font-size: 1.05rem; font-weight: 950; margin-bottom: 8px; }
-    .contact-card p{ color: var(--text-light); font-weight: 600; }
+    .contact-card i{ font-size: 1.9rem; color: var(--primary); margin-bottom: 10px; }
+    .contact-card h3{ font-weight: 950; margin-bottom: 8px; }
+    .contact-card p{ color: var(--text-light); font-weight: 650; }
     .contact-card a{ color: var(--primary); text-decoration:none; font-weight: 900; }
     .contact-card a:hover{ text-decoration: underline; }
 
@@ -586,37 +589,86 @@
     }
     .footer-inner{
       display:flex;
-      justify-content:space-between;
       align-items:center;
+      justify-content:space-between;
       gap: 12px;
       flex-wrap: wrap;
     }
     .footer-links{ display:flex; gap: 14px; flex-wrap: wrap; }
     .footer-links a{
-      color: rgba(255,255,255,0.88);
+      color: rgba(255,255,255,0.86);
       text-decoration:none;
-      font-weight: 800;
+      font-weight: 850;
       opacity: 0.95;
     }
     .footer-links a:hover{ color: var(--accent); }
 
+    /* ===== LIGHTBOX ===== */
+    .lightbox{
+      position: fixed;
+      inset: 0;
+      background: rgba(8,10,18,0.74);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+      z-index: 10000;
+    }
+    .lightbox.open{ display:flex; }
+    .lightbox-panel{
+      width: min(1100px, 96vw);
+      max-height: 86vh;
+      border-radius: 18px;
+      overflow:hidden;
+      background: #0b1220;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 40px 110px rgba(0,0,0,0.55);
+      position: relative;
+    }
+    .lightbox-img{
+      width: 100%;
+      height: 86vh;
+      max-height: 86vh;
+      object-fit: contain;
+      display:block;
+      background: #0b1220;
+    }
+    .lightbox-close{
+      position:absolute;
+      top: 12px;
+      right: 12px;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.92);
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      transition: .2s ease;
+      backdrop-filter: blur(10px);
+    }
+    .lightbox-close:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.14);
+      border-color: rgba(255,255,255,0.28);
+    }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 980px){
       .hero-content{ grid-template-columns: 1fr; }
-      .hero-photo-wrap{ justify-content: center; }
+      .hero-showcase{ max-width: 720px; margin: 0 auto; }
+      .hero h1{ font-size: 2.35rem; }
+      .hero h2{ font-size: 1.2rem; }
+      .hero-actions, .hero-meta, .social-links{ justify-content:center; }
       .hero-text{ text-align:center; }
-      .hero-meta{ justify-content:center; }
-      .hero-buttons{ justify-content:center; }
-      .social-links{ justify-content:center; }
 
+      .highlights-wrap{ grid-template-columns: 1fr; }
       .competency-tag{ grid-column: span 6; }
-      .stat{ grid-column: span 12; }
-      .pillar{ grid-column: span 12; }
-      .figure-card{ grid-column: span 12; }
-      .project-card{ grid-column: span 12; }
-      .edu-card{ grid-column: span 12; }
       .contact-card{ grid-column: span 12; }
     }
+
     @media (max-width: 768px){
       nav .container{ padding: 12px 18px; }
       .hamburger{ display:flex; }
@@ -624,22 +676,21 @@
         position: fixed;
         left: -100%;
         top: 64px;
+        width: 100%;
         flex-direction: column;
         background: rgba(255,255,255,0.96);
-        width: 100%;
-        text-align: center;
-        transition: 0.25s ease;
         border-bottom: 1px solid rgba(17,24,39,0.06);
         padding: 18px 0;
         gap: 1rem;
+        transition: .25s ease;
       }
       .nav-menu.active{ left: 0; }
-      .hero{ padding: 78px 0 42px; }
-      .hero-text h1{ font-size: 2.25rem; }
-      .hero-text h2{ font-size: 1.25rem; }
-      .hero-photo{ width: 240px; height: 240px; }
-      section{ padding: 48px 0; }
-      .figure-img{ height: 260px; }
+      .hero{ padding: 70px 0 34px; }
+      .showcase-img{ height: 220px; }
+      .highlight{ min-height: 380px; }
+      .highlight img{ height: 270px; }
+      .competency-tag{ grid-column: span 12; }
+      section{ padding: 46px 0; }
     }
   </style>
 </head>
@@ -649,14 +700,16 @@
   <!-- NAV -->
   <nav>
     <div class="container">
-      <div class="nav-brand">Rumi Acharya</div>
-      <ul class="nav-menu" id="navMenu">
+      <div class="nav-brand" aria-label="Site brand">
+        <span class="dot" aria-hidden="true"></span>
+        Rumi Acharya
+      </div>
+
+      <ul class="nav-menu" id="navMenu" aria-label="Navigation">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#highlights">Highlights</a></li>
         <li><a href="#competencies">Skills</a></li>
-        <li><a href="#research-overview">Research</a></li>
-        <li><a href="#figures">Figures</a></li>
-        <li><a href="#research">Projects</a></li>
         <li><a href="#publications">Publications</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -672,20 +725,24 @@
     <div class="container">
       <div class="hero-content">
 
-        <div class="hero-text">
+        <!-- Left -->
+        <div class="hero-text reveal">
           <h1>Rumi Acharya</h1>
           <h2>루미 아차르야</h2>
 
-          <p class="hero-specialties">
-            Biomaterials • 3D Bioprinting • Smart Hydrogels • Tissue Engineering
-          </p>
+          <div class="chips" aria-label="Core specialties">
+            <span class="chip"><i class="fas fa-print"></i> 3D Bioprinting (DIW/DLP)</span>
+            <span class="chip"><i class="fas fa-flask"></i> Ion-doped Hydrogels</span>
+            <span class="chip"><i class="fas fa-bolt"></i> Electro/Magnetic Stimulation</span>
+            <span class="chip"><i class="fas fa-bone"></i> Tissue Engineering</span>
+          </div>
 
           <div class="hero-meta">
             <span><i class="fas fa-map-marker-alt"></i> Chuncheon, Republic of Korea</span>
             <span><i class="fas fa-phone"></i> +82-10-2531-0294</span>
           </div>
 
-          <div class="hero-buttons">
+          <div class="hero-actions">
             <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Get in Touch</a>
             <a href="https://scholar.google.com/citations?user=d3BaaCoAAAAJ&hl=en" target="_blank" rel="noopener" class="btn btn-secondary">
               <i class="fas fa-graduation-cap"></i> Google Scholar
@@ -699,13 +756,43 @@
           </div>
         </div>
 
-        <div class="hero-photo-wrap">
-          <img
-            src="Rumi.png"
-            alt="Portrait of Rumi Acharya"
-            class="hero-photo"
-            onerror="this.onerror=null; this.src='https://via.placeholder.com/280/8b5cf6/ffffff?text=Rumi';"
-          />
+        <!-- Right: WOW big research images (p10 + p12) -->
+        <div class="hero-showcase reveal" aria-label="Research showcase">
+          <div class="showcase-card">
+            <img
+              src="pdf_p10.png"
+              class="showcase-img"
+              alt="Research highlight: Mg–ND/HAp composite scaffold evidence"
+              loading="eager"
+              onerror="this.onerror=null; this.src='https://via.placeholder.com/1200x700/111827/ffffff?text=pdf_p10.png+missing';"
+            />
+            <div class="showcase-overlay" aria-hidden="true"></div>
+            <button class="showcase-btn" type="button" aria-label="Open image" data-lightbox="pdf_p10.png">
+              <i class="fas fa-up-right-and-down-left-from-center"></i>
+            </button>
+            <div class="showcase-label">
+              <div class="title">Mg–ND/HAp Composite: Structural Evidence</div>
+              <div class="tag"><i class="fas fa-microscope"></i> SEM • XRD</div>
+            </div>
+          </div>
+
+          <div class="showcase-card">
+            <img
+              src="pdf_p12.png"
+              class="showcase-img"
+              alt="Research highlight: 3D printing and hydrogel fabrication workflow"
+              loading="eager"
+              onerror="this.onerror=null; this.src='https://via.placeholder.com/1200x700/111827/ffffff?text=pdf_p12.png+missing';"
+            />
+            <div class="showcase-overlay" aria-hidden="true"></div>
+            <button class="showcase-btn" type="button" aria-label="Open image" data-lightbox="pdf_p12.png">
+              <i class="fas fa-up-right-and-down-left-from-center"></i>
+            </button>
+            <div class="showcase-label">
+              <div class="title">3D Printing: Fabrication Workflow + Morphology</div>
+              <div class="tag"><i class="fas fa-print"></i> DIW Process</div>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -715,9 +802,9 @@
   <!-- ABOUT -->
   <section id="about">
     <div class="container">
-      <h2 class="section-title">Professional Summary</h2>
+      <h2 class="section-title reveal">Professional Summary</h2>
 
-      <div class="summary-box card">
+      <div class="summary-box card reveal">
         <p>
           Multidisciplinary researcher specializing in <strong>ion-doped bioceramics</strong> and <strong>electro/magneto-responsive hydrogel systems</strong>
           for bone and soft-tissue regeneration. Experienced in <strong>3D bioprinting (DIW/DLP)</strong>, nanocomposite design, microneedle platforms,
@@ -728,258 +815,92 @@
           (e.g., YAP/TAZ, tight junction pathways) using stimulus-enabled bioreactor approaches.
         </p>
       </div>
+    </div>
+  </section>
 
-      <!-- NEW: quick outcomes -->
-      <div class="stats-grid">
-        <div class="stat card">
-          <div class="kicker"><i class="fas fa-shield-virus"></i> Antibacterial / Antibiofilm</div>
-          <div class="big">~85–90% / ~80–82%</div>
-          <div class="small">High bacterial killing and biofilm suppression reported for Mg–ND/HAp composite scaffold formulations.</div>
-        </div>
-        <div class="stat card">
-          <div class="kicker"><i class="fas fa-bone"></i> Osteogenic performance</div>
-          <div class="big">ALP ↑ • Mineralization ↑</div>
-          <div class="small">Ion-doped systems support osteoblastic differentiation through tunable chemistry + scaffold microarchitecture.</div>
-        </div>
-        <div class="stat card">
-          <div class="kicker"><i class="fas fa-bolt"></i> Stimulus-enabled cell control</div>
-          <div class="big">EMF → YAP/TAZ</div>
-          <div class="small">Electromagnetic stimulation used to enhance mechanotransduction, alignment, and soft-tissue regeneration signaling.</div>
-        </div>
+  <!-- BIG RESEARCH HIGHLIGHTS (p10 + p12) -->
+  <section id="highlights" class="bg-light">
+    <div class="container">
+      <h2 class="section-title reveal">Research Highlights</h2>
+      <p class="subtext-center reveal">
+        Two high-impact visuals shown in a clean, full-size layout. Click to open in full screen.
+      </p>
+
+      <div class="highlights-wrap">
+        <article class="highlight reveal">
+          <button class="open" type="button" aria-label="Open highlight image" data-lightbox="pdf_p10.png">
+            <i class="fas fa-up-right-and-down-left-from-center"></i>
+          </button>
+          <div class="shade" aria-hidden="true"></div>
+          <img
+            src="pdf_p10.png"
+            alt="Mg–ND/HAp composite scaffold: synthesis and structural evidence"
+            loading="lazy"
+            onerror="this.onerror=null; this.src='https://via.placeholder.com/1400x900/111827/ffffff?text=pdf_p10.png+missing';"
+          />
+          <div class="body">
+            <div class="kicker">
+              <span class="badge"><i class="fas fa-bone"></i> Chapter 2</span>
+              <span class="badge"><i class="fas fa-shield-virus"></i> Antibacterial scaffold</span>
+            </div>
+            <h3>Mg–ND/HAp Composite Scaffold: Synthesis + Structural Validation</h3>
+            <p>Microstructural and crystallographic evidence supporting composite formation and scaffold integrity (SEM/XRD).</p>
+          </div>
+        </article>
+
+        <article class="highlight reveal">
+          <button class="open" type="button" aria-label="Open highlight image" data-lightbox="pdf_p12.png">
+            <i class="fas fa-up-right-and-down-left-from-center"></i>
+          </button>
+          <div class="shade" aria-hidden="true"></div>
+          <img
+            src="pdf_p12.png"
+            alt="3D printing workflow and hydrogel fabrication: multistep process and morphology"
+            loading="lazy"
+            onerror="this.onerror=null; this.src='https://via.placeholder.com/1400x900/111827/ffffff?text=pdf_p12.png+missing';"
+          />
+          <div class="body">
+            <div class="kicker">
+              <span class="badge"><i class="fas fa-print"></i> Printing workflow</span>
+              <span class="badge"><i class="fas fa-layer-group"></i> Architecture + SEM</span>
+            </div>
+            <h3>3D Printing + Multistep Hydrogel Fabrication</h3>
+            <p>End-to-end workflow showing fabrication steps, scaffold architectures, and morphology across conditions.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
   <!-- SKILLS -->
-  <section id="competencies" class="bg-light">
+  <section id="competencies">
     <div class="container">
-      <h2 class="section-title">Core Competencies</h2>
+      <h2 class="section-title reveal">Core Competencies</h2>
+
       <div class="competencies-grid">
-        <div class="competency-tag"><i class="fas fa-print"></i> 3D Bioprinting (DIW/DLP)</div>
-        <div class="competency-tag"><i class="fas fa-flask"></i> Ion-doped Hydrogel Formulation</div>
-        <div class="competency-tag"><i class="fas fa-syringe"></i> Microneedle Platforms</div>
-        <div class="competency-tag"><i class="fas fa-microscope"></i> Cell Culture (hBMSCs, HaCaT)</div>
-        <div class="competency-tag"><i class="fas fa-chart-line"></i> Rheology & Mechanical Testing</div>
-        <div class="competency-tag"><i class="fas fa-atom"></i> ICP-OES Ion Release</div>
-        <div class="competency-tag"><i class="fas fa-eye"></i> SEM/EDS • FTIR • XRD</div>
-        <div class="competency-tag"><i class="fas fa-image"></i> Confocal/Fluorescence Microscopy</div>
-        <div class="competency-tag"><i class="fas fa-bolt"></i> Electro/Magnetic Stimulation</div>
-        <div class="competency-tag"><i class="fas fa-layer-group"></i> Nanocomposite Hydrogels</div>
-        <div class="competency-tag"><i class="fas fa-clipboard-check"></i> GLP & ISO 13485 (QMS)</div>
-        <div class="competency-tag"><i class="fas fa-laptop-code"></i> Data Visualization</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="container">
-      <h2 class="section-title">Professional Experience</h2>
-
-      <div class="experience-wrap">
-        <div class="experience-item card">
-          <div class="exp-header">
-            <div>
-              <div class="exp-title">Ph.D. Researcher</div>
-              <div class="exp-org">Bio-Robotics Laboratory, Kangwon National University, Korea</div>
-            </div>
-            <div class="exp-date">Mar 2023 – Present</div>
-          </div>
-          <ul>
-            <li>Developed 3D-printable ion-doped hydrogel scaffolds for antibacterial bone regeneration and controlled osteogenic differentiation.</li>
-            <li>Designed stimulus-responsive hydrogel platforms integrating electromagnetic stimulation for mechanotransduction control (YAP/TAZ).</li>
-            <li>Led end-to-end workflows: formulation → printing → crosslinking → characterization → in vitro validation → figure/data preparation.</li>
-          </ul>
-        </div>
-
-        <div class="experience-item card">
-          <div class="exp-header">
-            <div>
-              <div class="exp-title">Researcher</div>
-              <div class="exp-org">BMIL Laboratory, Kookmin University, Korea</div>
-            </div>
-            <div class="exp-date">Mar 2022 – Feb 2023</div>
-          </div>
-          <ul>
-            <li>Protein extraction and purification.</li>
-            <li>Antibacterial drug experiments for resistant bacteria.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- NEW: RESEARCH OVERVIEW (3 pillars) -->
-  <section id="research-overview" class="bg-light">
-    <div class="container">
-      <h2 class="section-title">Dissertation Research</h2>
-      <p class="subtext-center">
-        Three connected research pillars: ion-doped bioceramics for antibacterial bone scaffolds, dual-ion bioactive glass hydrogels for osteogenesis,
-        and electromagnetic-stimulus hydrogels for soft-tissue regeneration.
-      </p>
-
-      <div class="pillars">
-        <div class="pillar card">
-          <div class="top">
-            <span class="pill">Chapter 2</span>
-            <i class="fas fa-bone" style="color: var(--primary); font-size: 1.25rem;"></i>
-          </div>
-          <h3>Mg–ND/HAp Composite Scaffolds</h3>
-          <p>Antibacterial bone-regeneration scaffold system integrating Mg²⁺ and nanodiamond with HAp for bioactivity + structure.</p>
-          <ul>
-            <li>Controlled Mg²⁺ release (ICP-OES)</li>
-            <li>High antibacterial + antibiofilm activity</li>
-            <li>Enhanced cell migration and cytocompatibility</li>
-          </ul>
-        </div>
-
-        <div class="pillar card">
-          <div class="top">
-            <span class="pill">Chapter 3</span>
-            <i class="fas fa-flask" style="color: var(--primary); font-size: 1.25rem;"></i>
-          </div>
-          <h3>ZnO–Mg²⁺/Si Bioactive-Glass Hydrogels</h3>
-          <p>3D-printed hybrid hydrogel designed to improve mechanical performance and osteoblastic differentiation through dual-ion synergy.</p>
-          <ul>
-            <li>3D printing process optimization</li>
-            <li>Rheology + structural evaluation</li>
-            <li>ALP and mineralization enhancement</li>
-          </ul>
-        </div>
-
-        <div class="pillar card">
-          <div class="top">
-            <span class="pill">Chapter 4</span>
-            <i class="fas fa-bolt" style="color: var(--primary); font-size: 1.25rem;"></i>
-          </div>
-          <h3>Electro-Magnetic Ion-Doped Hydrogels</h3>
-          <p>mCNC-based printable hydrogels enabling EMF-assisted mechanotransduction modulation for soft-tissue regeneration.</p>
-          <ul>
-            <li>Fe-ion doped CNC (mCNC) fabrication</li>
-            <li>EMF bioreactor stimulation</li>
-            <li>YAP/TAZ nuclear translocation + cytoskeletal reorganization</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- NEW: FIGURE GALLERY (IMAGES FROM PDF ZIP) -->
-  <section id="figures">
-    <div class="container">
-      <h2 class="section-title">Selected Figures</h2>
-      <p class="subtext-center">
-        Slide-derived visuals (from your pre-defense PDF) presented as a clean figure gallery. Replace or add more anytime.
-      </p>
-
-      <div class="gallery-grid">
-        <div class="figure-card card">
-          <img src="pdf_p10.png" class="figure-img" alt="Synthesis and characterization of Mg–ND/HAp composite scaffold (SEM/XRD)" />
-          <div class="figure-body">
-            <div class="figure-title">Mg–ND/HAp Composite: Synthesis + Structural Evidence</div>
-            <div class="figure-desc">Composite formation, microstructure (SEM), and crystallographic confirmation (XRD).</div>
-          </div>
-        </div>
-
-        <div class="figure-card card">
-          <img src="pdf_p12.png" class="figure-img" alt="3D printing workflow and hydrogel fabrication (multistep) with SEM morphology" />
-          <div class="figure-body">
-            <div class="figure-title">3D Printing + Multistep Hydrogel Fabrication</div>
-            <div class="figure-desc">Print workflow, scaffold architectures, and SEM morphology across concentrations.</div>
-          </div>
-        </div>
-
-        <div class="figure-card card">
-          <img src="pdf_p14.png" class="figure-img" alt="ICP-OES Mg ion release and BET analysis of MgND-HAp nanoparticles" />
-          <div class="figure-body">
-            <div class="figure-title">Ionic Release (ICP-OES) + BET Surface Analysis</div>
-            <div class="figure-desc">Sustained Mg²⁺ release profiles and mesoporous structure characterization.</div>
-          </div>
-        </div>
-
-        <div class="figure-card card">
-          <img src="pdf_p18.png" class="figure-img" alt="Antibacterial and antibiofilm results against E. coli and S. aureus" />
-          <div class="figure-body">
-            <div class="figure-title">Antibacterial / Antibiofilm Performance</div>
-            <div class="figure-desc">Quantitative and qualitative assays demonstrating strong bacterial suppression.</div>
-          </div>
-        </div>
-
-        <div class="figure-card card">
-          <img src="pdf_p21.png" class="figure-img" alt="Development of ZnO-Mg2+/Si bioactive-glass (SZM) composite and bonding evidence" />
-          <div class="figure-body">
-            <div class="figure-title">SZM Bioactive-Glass Composite Development</div>
-            <div class="figure-desc">Porous morphology and bonding signatures supporting successful ion integration.</div>
-          </div>
-        </div>
-
-        <div class="figure-card card">
-          <img src="pdf_p26.png" class="figure-img" alt="Osteogenic confirmation with ALP, mineralization, cytoskeleton, and quantified markers" />
-          <div class="figure-body">
-            <div class="figure-title">Osteogenic Differentiation Confirmation</div>
-            <div class="figure-desc">ALP, mineralization, cytoskeletal organization, and quantified differentiation markers.</div>
-          </div>
-        </div>
-
-        <div class="figure-card card">
-          <img src="pdf_p34.png" class="figure-img" alt="Electromagnetic field (EMF) bioreactor system for hydrogel stimulation" />
-          <div class="figure-body">
-            <div class="figure-title">EMF Bioreactor for Stimulus-Enabled Regeneration</div>
-            <div class="figure-desc">Electromagnetic stimulation setup used for mechanotransduction-driven cell modulation.</div>
-          </div>
-        </div>
-
-        <div class="figure-card card">
-          <img src="pdf_p40.png" class="figure-img" alt="Future directions slide: multi-ion platforms, 4D printing, biosensing, clinical translation" />
-          <div class="figure-body">
-            <div class="figure-title">Future Directions</div>
-            <div class="figure-desc">Multi-ion bioactive platforms, 4D programmable scaffolds, and biosensing integration.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="research" class="bg-light">
-    <div class="container">
-      <h2 class="section-title">Key R&amp;D Projects</h2>
-
-      <div class="projects-grid">
-        <div class="project-card card">
-          <div class="project-icon"><i class="fas fa-bone"></i></div>
-          <h3>Ion-Reinforced Bio-Ceramic Ink</h3>
-          <p>Shear-thinning printable ink integrating bio-ceramics with bioactive ions and polymeric binders for high-fidelity DIW printing and improved osteogenic/antibacterial performance.</p>
-        </div>
-
-        <div class="project-card card">
-          <div class="project-icon"><i class="fas fa-gem"></i></div>
-          <h3>Mg–Nanodiamond–HAp Hybrid Scaffold</h3>
-          <p>Ion-releasing composite with controlled Mg²⁺ behavior (ICP-OES) and biological validation (cytocompatibility, migration, antibacterial/antibiofilm assays).</p>
-        </div>
-
-        <div class="project-card card">
-          <div class="project-icon"><i class="fas fa-hand-sparkles"></i></div>
-          <h3>mCNC Electro-Magnetic Hydrogel</h3>
-          <p>Stimulus-responsive hydrogel platform targeting mechanotransduction pathways (e.g., YAP/TAZ) for soft-tissue regeneration and barrier restoration.</p>
-        </div>
-
-        <div class="project-card card">
-          <div class="project-icon"><i class="fas fa-bolt"></i></div>
-          <h3>Dual-Ion Bioactive-Glass Hydrogel</h3>
-          <p>ZnO–Mg²⁺/Si hybrid system designed for improved osteogenesis and mechanical robustness through synergistic ionic and structural cues.</p>
-        </div>
+        <div class="competency-tag reveal"><i class="fas fa-print"></i> 3D Bioprinting (DIW/DLP)</div>
+        <div class="competency-tag reveal"><i class="fas fa-flask"></i> Ion-doped Hydrogel Formulation</div>
+        <div class="competency-tag reveal"><i class="fas fa-syringe"></i> Microneedle Platforms</div>
+        <div class="competency-tag reveal"><i class="fas fa-microscope"></i> Cell Culture (hBMSCs, HaCaT)</div>
+        <div class="competency-tag reveal"><i class="fas fa-chart-line"></i> Rheology & Mechanical Testing</div>
+        <div class="competency-tag reveal"><i class="fas fa-atom"></i> ICP-OES Ion Release</div>
+        <div class="competency-tag reveal"><i class="fas fa-eye"></i> SEM/EDS • FTIR • XRD</div>
+        <div class="competency-tag reveal"><i class="fas fa-image"></i> Confocal/Fluorescence Microscopy</div>
+        <div class="competency-tag reveal"><i class="fas fa-bolt"></i> Electro/Magnetic Stimulation</div>
+        <div class="competency-tag reveal"><i class="fas fa-layer-group"></i> Nanocomposite Hydrogels</div>
+        <div class="competency-tag reveal"><i class="fas fa-clipboard-check"></i> GLP & ISO 13485 (QMS)</div>
+        <div class="competency-tag reveal"><i class="fas fa-laptop-code"></i> Data Visualization</div>
       </div>
     </div>
   </section>
 
   <!-- PUBLICATIONS -->
-  <section id="publications">
+  <section id="publications" class="bg-light">
     <div class="container">
-      <h2 class="section-title">Publications (Selected)</h2>
+      <h2 class="section-title reveal">Publications (Selected)</h2>
 
       <div class="pub-wrap">
-        <div class="pub-section">
+        <div class="pub-section reveal">
           <h3>First Author</h3>
 
           <div class="pub-item card">
@@ -1007,7 +928,7 @@
           </div>
         </div>
 
-        <div class="pub-section">
+        <div class="pub-section reveal">
           <h3>Profiles</h3>
           <div class="pub-item card">
             <span class="pub-badge">Links</span>
@@ -1023,56 +944,25 @@
     </div>
   </section>
 
-  <!-- EDUCATION -->
-  <section id="education" class="bg-light">
-    <div class="container">
-      <h2 class="section-title">Education</h2>
-
-      <div class="education-grid">
-        <div class="edu-card card">
-          <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
-          <h3>Ph.D. (Smart Agriculture Convergence)</h3>
-          <p class="edu-institution">Kangwon National University, Korea</p>
-          <p class="edu-date">Expected 2026</p>
-          <p class="edu-thesis"><strong>Thesis:</strong> Ion-doped nanocomposite hydrogels for antibacterial function and regenerative outcomes</p>
-        </div>
-
-        <div class="edu-card card">
-          <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
-          <h3>M.Sc. (Plant Science)</h3>
-          <p class="edu-institution">Guru Ghasidas Vishwavidyalaya, India</p>
-          <p class="edu-date">2018</p>
-        </div>
-
-        <div class="edu-card card">
-          <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
-          <h3>B.Sc. (Plant Science)</h3>
-          <p class="edu-institution">University of Burdwan, India</p>
-          <p class="edu-date">2015</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- CONTACT -->
   <section id="contact">
     <div class="container">
-      <h2 class="section-title">Get in Touch</h2>
+      <h2 class="section-title reveal">Get in Touch</h2>
 
       <div class="contact-grid">
-        <div class="contact-card card">
+        <div class="contact-card card reveal">
           <i class="fas fa-envelope"></i>
           <h3>Email</h3>
           <p><a href="mailto:acharyarumi7@gmail.com">acharyarumi7@gmail.com</a></p>
         </div>
 
-        <div class="contact-card card">
+        <div class="contact-card card reveal">
           <i class="fas fa-phone"></i>
           <h3>Phone</h3>
           <p>+82-10-2531-0294</p>
         </div>
 
-        <div class="contact-card card">
+        <div class="contact-card card reveal">
           <i class="fas fa-map-marker-alt"></i>
           <h3>Location</h3>
           <p>Chuncheon<br>Republic of Korea</p>
@@ -1094,19 +984,69 @@
     </div>
   </footer>
 
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Image viewer">
+      <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close">
+        <i class="fas fa-xmark"></i>
+      </button>
+      <img class="lightbox-img" id="lightboxImg" alt="Expanded figure preview" />
+    </div>
+  </div>
+
   <script>
+    // Mobile nav
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navMenu');
-
     function toggleMenu(){ navMenu.classList.toggle('active'); }
-
     hamburger.addEventListener('click', toggleMenu);
     hamburger.addEventListener('keydown', (e) => {
       if(e.key === 'Enter' || e.key === ' ') toggleMenu();
     });
-
     document.querySelectorAll('.nav-menu a').forEach(link => {
       link.addEventListener('click', () => navMenu.classList.remove('active'));
+    });
+
+    // WOW-like reveals (IntersectionObserver)
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => io.observe(el));
+
+    // Lightbox for big images
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    function openLightbox(src){
+      lightboxImg.src = src;
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(){
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-lightbox]').forEach(btn => {
+      btn.addEventListener('click', () => openLightbox(btn.getAttribute('data-lightbox')));
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if(e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
     });
   </script>
 
