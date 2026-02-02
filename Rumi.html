@@ -544,10 +544,10 @@
           </div>
         </div>
 
-        <!-- BIG research highlights -->
+        <!-- UPDATED: research image 1 & 2 -> pdf_p10.png and pdf_p12.png -->
         <div class="showcase" aria-label="Research highlights">
           <div class="shot">
-            <img src="pdf_p10.png" alt="Mg–ND/HAp Composite: Structural Evidence"
+            <img src="pdf_p10.png" alt="Research Highlight: pdf_p10.png"
                  onerror="this.onerror=null; this.src='https://via.placeholder.com/1400x800/111827/ffffff?text=pdf_p10.png+missing';">
             <div class="overlay"></div>
             <button class="open" type="button" data-open="pdf_p10.png" aria-label="Open image">⤢</button>
@@ -558,7 +558,7 @@
           </div>
 
           <div class="shot">
-            <img src="pdf_p12.png" alt="3D Printing Workflow + Morphology"
+            <img src="pdf_p12.png" alt="Research Highlight: pdf_p12.png"
                  onerror="this.onerror=null; this.src='https://via.placeholder.com/1400x800/111827/ffffff?text=pdf_p12.png+missing';">
             <div class="overlay"></div>
             <button class="open" type="button" data-open="pdf_p12.png" aria-label="Open image">⤢</button>
@@ -592,17 +592,15 @@
     </div>
   </section>
 
-  <!-- HIGHLIGHTS SECTION (big, clean) -->
+  <!-- HIGHLIGHTS SECTION (UPDATED to pdf_p10.png + pdf_p12.png) -->
   <section id="highlights" class="bg2">
     <div class="container">
       <h2 class="title">Research Highlights</h2>
-      <p class="sub">
-        Two key figures displayed in full, high-impact layout. Click ⤢ to view fullscreen.
-      </p>
+      <p class="sub">Two key figures displayed in full, high-impact layout. Click ⤢ to view fullscreen.</p>
 
       <div class="showcase">
         <div class="shot">
-          <img src="pdf_p10.png" alt="Research Highlight: Mg–ND/HAp composite scaffold"
+          <img src="pdf_p10.png" alt="Research Highlight: pdf_p10.png"
                onerror="this.onerror=null; this.src='https://via.placeholder.com/1400x800/111827/ffffff?text=pdf_p10.png+missing';">
           <div class="overlay"></div>
           <button class="open" type="button" data-open="pdf_p10.png" aria-label="Open image">⤢</button>
@@ -613,7 +611,7 @@
         </div>
 
         <div class="shot">
-          <img src="pdf_p12.png" alt="Research Highlight: 3D printing workflow and morphology"
+          <img src="pdf_p12.png" alt="Research Highlight: pdf_p12.png"
                onerror="this.onerror=null; this.src='https://via.placeholder.com/1400x800/111827/ffffff?text=pdf_p12.png+missing';">
           <div class="overlay"></div>
           <button class="open" type="button" data-open="pdf_p12.png" aria-label="Open image">⤢</button>
@@ -697,7 +695,6 @@
   </div>
 
   <script>
-    // Run after DOM is ready
     (function(){
       const menu = document.getElementById('menu');
       const hamburger = document.getElementById('hamburger');
@@ -724,7 +721,6 @@
         document.body.style.overflow = '';
       }
 
-      // Open on any button with data-open
       document.querySelectorAll('[data-open]').forEach(btn => {
         btn.addEventListener('click', () => openBox(btn.getAttribute('data-open')));
       });
