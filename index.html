@@ -3,47 +3,58 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rumi Acharya, Ph.D. - Biomaterials & 3D Bioprinting Researcher</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Rumi Acharya, Ph.D. — Biomaterials & 3D Bioprinting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     :root{
-      --primary:#8b5cf6;
-      --secondary:#6d28d9;
-      --accent:#a78bfa;
-      --text-dark:#111827;
-      --text-light:#6b7280;
-      --bg-light:#f8fafc;
+      /* Academic palette */
+      --navy-1:#0c1b2e;
+      --navy-2:#16324f;
+      --accent:#1d4e89;
+      --accent-2:#2c6ca8;
+      --accent-light:#9dc2e6;
+      --accent-soft: rgba(29,78,137,0.07);
+
+      --ink:#101828;
+      --body:#525f6d;
+      --muted:#78838f;
+      --line:#e3e8ef;
+      --bg-light:#f7f9fb;
       --white:#ffffff;
-      --shadow: 0 12px 34px rgba(17,24,39,0.10);
-      --shadow-2: 0 18px 45px rgba(17,24,39,0.14);
-      --radius: 18px;
+
+      --shadow: 0 1px 2px rgba(16,24,40,0.04), 0 10px 26px rgba(16,24,40,0.05);
+      --shadow-2: 0 1px 2px rgba(16,24,40,0.05), 0 14px 34px rgba(16,24,40,0.09);
+      --radius: 12px;
+
+      --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
     }
+
     html{ scroll-behavior:smooth; }
+
     body{
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      color: var(--text-dark);
+      font-family: 'Inter', -apple-system, sans-serif;
+      line-height: 1.65;
+      color: var(--body);
       background: var(--white);
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Wider layout (less empty space) */
- /* Wider layout (less empty space) */
-.container{
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 22px;
-}
-
+    .container{
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
     /* ===== NAV ===== */
     nav{
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(17,24,39,0.06);
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
       position: fixed;
       width: 100%;
       top: 0;
@@ -53,283 +64,378 @@
       display:flex;
       justify-content:space-between;
       align-items:center;
-      padding: 14px 22px;
+      padding: 15px 24px;
     }
     .nav-brand{
-      font-size: 1.22rem;
-      font-weight: 800;
-      color: var(--primary);
+      font-family: var(--serif);
+      font-size: 1.18rem;
+      font-weight: 600;
+      color: var(--ink);
       letter-spacing: 0.2px;
     }
+    .nav-brand span{ color: var(--accent); }
+
     .nav-menu{
       display:flex;
       list-style:none;
-      gap: 1.6rem;
+      gap: 1.5rem;
       align-items:center;
     }
     .nav-menu a{
       text-decoration:none;
-      color: var(--text-dark);
-      font-weight: 600;
-      font-size: 0.95rem;
-      opacity: 0.9;
-      transition: 0.2s ease;
+      color: var(--body);
+      font-weight: 500;
+      font-size: 0.92rem;
+      letter-spacing: 0.1px;
+      padding-bottom: 2px;
+      border-bottom: 1.5px solid transparent;
+      transition: 0.18s ease;
     }
-    .nav-menu a:hover{ color: var(--primary); opacity: 1; }
+    .nav-menu a:hover{ color: var(--accent); border-bottom-color: var(--accent); }
+
     .hamburger{ display:none; flex-direction:column; cursor:pointer; }
-    .hamburger span{ width:25px; height:3px; background: var(--text-dark); margin:3px 0; border-radius: 4px; transition:0.2s; }
+    .hamburger span{ width:24px; height:2px; background: var(--ink); margin:3px 0; border-radius: 2px; transition:0.2s; }
 
     /* ===== HERO ===== */
     .hero{
-      background: radial-gradient(1100px 600px at 15% 35%, rgba(255,255,255,0.18), transparent 60%),
-                  linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-      color: var(--white);
-      padding: 92px 0 54px;
-      margin-top: 64px; /* space for fixed nav */
+      position: relative;
+      background:
+        radial-gradient(900px 520px at 12% 18%, rgba(93,153,209,0.20), transparent 62%),
+        linear-gradient(140deg, var(--navy-1) 0%, var(--navy-2) 62%, #1d4e89 100%);
+      color: #eef3f8;
+      padding: 84px 0 66px;
+      margin-top: 63px;
       overflow:hidden;
     }
-    .hero .container{ position: relative; }
+    .hero::after{
+      content:'';
+      position:absolute;
+      left:0; right:0; bottom:0;
+      height: 1px;
+      background: rgba(255,255,255,0.10);
+    }
+
     .hero-content{
       display:grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 3rem;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 3.2rem;
       align-items:center;
     }
+
     .hero-text h1{
-      font-size: 3.1rem;
-      font-weight: 800;
-      line-height: 1.05;
-      margin-bottom: 0.55rem;
-      letter-spacing: -0.4px;
+      font-family: var(--serif);
+      font-size: 3rem;
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.6px;
+      color: #ffffff;
+      margin-bottom: 0.4rem;
+    }
+    .hero-kr{
+      font-size: 1.02rem;
+      font-weight: 400;
+      opacity: 0.68;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.9rem;
     }
     .hero-text h2{
-      font-size: 1.55rem;
+      font-size: 1.24rem;
+      font-weight: 600;
+      color: var(--accent-light);
+      letter-spacing: 0.2px;
+      margin-bottom: 0.5rem;
+    }
+    .hero-affil{
+      font-size: 0.99rem;
+      font-weight: 400;
+      opacity: 0.82;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    .hero-rule{
+      width: 44px;
+      height: 2px;
+      background: var(--accent-light);
+      opacity: 0.65;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Eyebrow label */
+    .hero-label{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      font-size: 0.7rem;
       font-weight: 700;
-      margin-bottom: 0.85rem;
-      opacity: 0.96;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 9px;
     }
-    .hero-specialties{
-      font-size: 1.05rem;
-      opacity: 0.92;
-      margin-bottom: 1.1rem;
+
+    /* Current research topic — the emphasised element */
+    .hero-focus{
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-left: 3px solid var(--accent-light);
+      border-radius: 10px;
+      padding: 17px 20px;
+      max-width: 640px;
+      margin-bottom: 1.6rem;
+    }
+    .hero-focus-text{
+      font-family: var(--serif);
+      font-size: 1.12rem;
+      font-weight: 400;
+      line-height: 1.55;
+      color: #f2f7fb;
+    }
+
+    /* Research interests */
+    .hero-interests{ margin-bottom: 1.5rem; }
+    .interest-chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 8px;
+    }
+    .interest-chips span{
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.18);
+      font-size: 0.86rem;
       font-weight: 500;
+      color: #e3ecf4;
+      transition: 0.18s ease;
     }
+    .interest-chips span:hover{
+      background: rgba(255,255,255,0.11);
+      border-color: rgba(255,255,255,0.34);
+    }
+
     .hero-meta{
       display:flex;
       flex-wrap:wrap;
-      gap: 14px 20px;
-      margin: 1.1rem 0 1.2rem;
-      opacity: 0.95;
+      gap: 9px 24px;
+      margin-bottom: 1.6rem;
+      opacity: 0.85;
     }
     .hero-meta span{
       display:inline-flex;
       align-items:center;
-      gap: 10px;
-      font-size: 0.98rem;
-      font-weight: 600;
+      gap: 9px;
+      font-size: 0.92rem;
+      font-weight: 400;
     }
+    .hero-meta i{ color: var(--accent-light); font-size: 0.88rem; }
+    .hero-meta a{ color: inherit; text-decoration: none; }
+    .hero-meta a:hover{ color:#fff; text-decoration: underline; }
+
     .hero-buttons{
       display:flex;
-      gap: 0.9rem;
-      margin: 1.35rem 0 1.05rem;
+      gap: 0.7rem;
+      margin-bottom: 1.5rem;
       flex-wrap:wrap;
     }
     .btn{
-      padding: 12px 20px;
-      border-radius: 999px;
+      padding: 11px 20px;
+      border-radius: 8px;
       text-decoration:none;
-      font-weight: 700;
-      transition: all 0.22s ease;
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: all 0.18s ease;
       display:inline-flex;
       align-items:center;
-      gap: 10px;
-      font-size: 0.95rem;
+      gap: 9px;
       white-space: nowrap;
+      border: 1px solid transparent;
     }
     .btn-primary{
       background: var(--white);
-      color: var(--primary);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+      color: var(--navy-1);
+      border-color: var(--white);
     }
-    .btn-primary:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 14px 32px rgba(0,0,0,0.22);
-    }
+    .btn-primary:hover{ background: #e8eff6; border-color:#e8eff6; }
     .btn-secondary{
-      background: transparent;
-      color: var(--white);
-      border: 2px solid rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.04);
+      color: #eef3f8;
+      border-color: rgba(255,255,255,0.32);
     }
-    .btn-secondary:hover{
-      background: var(--white);
-      color: var(--primary);
-      transform: translateY(-2px);
-    }
+    .btn-secondary:hover{ background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.55); }
+
     .social-links{
       display:flex;
-      gap: 14px;
+      gap: 10px;
       align-items:center;
-      margin-top: 10px;
     }
     .social-links a{
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
       display:grid;
       place-items:center;
-      color: var(--white);
+      color: #dce7f1;
       text-decoration:none;
-      border: 1px solid rgba(255,255,255,0.30);
-      background: rgba(255,255,255,0.10);
-      transition: 0.2s ease;
-      font-size: 1.15rem;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.05);
+      transition: 0.18s ease;
+      font-size: 1rem;
     }
     .social-links a:hover{
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.18);
-      border-color: rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.13);
+      border-color: rgba(255,255,255,0.38);
+      color:#fff;
     }
 
-    /* Bigger profile image */
+    /* Portrait */
     .hero-photo-wrap{
       display:flex;
       justify-content:flex-end;
       align-items:center;
     }
     .hero-photo{
-      width: 280px;
-      height: 280px;
-      border-radius: 999px;
-      border: 6px solid rgba(255,255,255,0.92);
-      box-shadow: 0 22px 55px rgba(0,0,0,0.28);
+      width: 270px;
+      height: 320px;
       object-fit: cover;
-      background: rgba(255,255,255,0.08);
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.28);
+      box-shadow: 0 24px 60px rgba(6,16,28,0.45);
+      background: rgba(255,255,255,0.06);
     }
 
     /* ===== SECTIONS ===== */
-    section{ padding: 56px 0; }
+    section{ padding: 64px 0; }
     .bg-light{ background: var(--bg-light); }
+    .bordered-top{ border-top: 1px solid var(--line); }
 
     .section-title{
-      font-size: 2.1rem;
-      font-weight: 850;
+      font-family: var(--serif);
+      font-size: 1.95rem;
+      font-weight: 600;
+      color: var(--ink);
       text-align:center;
-      margin-bottom: 1.8rem;
-      letter-spacing: -0.3px;
+      letter-spacing: -0.2px;
+      margin-bottom: 2rem;
     }
     .section-title::after{
       content:'';
       display:block;
-      width: 72px;
-      height: 4px;
-      background: var(--primary);
-      margin: 0.8rem auto 0;
-      border-radius: 999px;
-    }
-    .subtext-center{
-      max-width: 980px;
-      margin: 0 auto 1.8rem;
-      text-align:center;
-      color: var(--text-light);
-      font-weight: 500;
+      width: 46px;
+      height: 2px;
+      background: var(--accent);
+      margin: 0.9rem auto 0;
     }
 
-    /* Cards */
+    .subtext-center{
+      max-width: 780px;
+      margin: -1rem auto 2rem;
+      text-align:center;
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
     .card{
       background: var(--white);
       border-radius: var(--radius);
+      border: 1px solid var(--line);
       box-shadow: var(--shadow);
-      border: 1px solid rgba(17,24,39,0.06);
     }
 
     /* ===== ABOUT ===== */
     .summary-box{
-      padding: 24px;
-      border-left: 6px solid var(--primary);
-      max-width: 1100px;
+      padding: 26px 30px;
+      border-left: 3px solid var(--accent);
+      max-width: 1000px;
       margin: 0 auto;
     }
     .summary-box p{
-      color: var(--text-light);
-      font-size: 1.04rem;
-      line-height: 1.8;
+      color: var(--body);
+      font-size: 1.01rem;
+      line-height: 1.85;
     }
-    .summary-box p + p{ margin-top: 12px; }
+    .summary-box p + p{ margin-top: 14px; }
+    .summary-box strong{ color: var(--ink); font-weight: 600; }
 
     /* ===== COMPETENCIES ===== */
     .competencies-grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
+      gap: 12px;
     }
     .competency-tag{
       grid-column: span 4;
-      padding: 14px 14px;
-      border-radius: 14px;
+      padding: 13px 16px;
+      border-radius: 10px;
       background: var(--white);
-      border: 1px solid rgba(17,24,39,0.06);
-      box-shadow: 0 8px 22px rgba(17,24,39,0.07);
-      font-weight: 650;
-      color: var(--text-dark);
+      border: 1px solid var(--line);
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--ink);
       display:flex;
       align-items:center;
-      gap: 10px;
-      justify-content:center;
-      text-align:center;
-      transition: 0.2s ease;
+      gap: 11px;
+      transition: 0.18s ease;
     }
-    .competency-tag i{ color: var(--primary); }
+    .competency-tag i{ color: var(--accent); font-size: 0.95rem; width: 18px; text-align:center; }
     .competency-tag:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(139,92,246,0.18);
-      border-color: rgba(139,92,246,0.35);
+      border-color: var(--accent-2);
+      background: var(--accent-soft);
     }
 
     /* ===== EXPERIENCE ===== */
     .experience-wrap{
       display:grid;
       grid-template-columns: 1fr;
-      gap: 16px;
-      max-width: 1100px;
+      gap: 14px;
+      max-width: 1000px;
       margin: 0 auto;
     }
     .experience-item{
-      padding: 20px;
-      border-left: 6px solid var(--primary);
+      padding: 22px 26px;
+      border-left: 3px solid var(--accent);
     }
     .exp-header{
       display:flex;
       justify-content:space-between;
       align-items:flex-start;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
-    .exp-title{ font-size: 1.25rem; font-weight: 850; color: var(--primary); }
-    .exp-org{ font-weight: 650; color: var(--text-dark); opacity: 0.95; margin-top: 2px; }
+    .exp-title{
+      font-family: var(--serif);
+      font-size: 1.22rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.35;
+    }
+    .exp-org{ font-weight: 500; color: var(--accent); font-size: 0.96rem; margin-top: 3px; }
     .exp-date{
-      font-weight: 750;
-      color: var(--text-light);
-      background: rgba(17,24,39,0.04);
-      border: 1px solid rgba(17,24,39,0.06);
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 0.92rem;
-    }
-    .experience-item ul{ list-style:none; margin-top: 10px; }
-    .experience-item li{
-      padding: 7px 0;
-      color: var(--text-light);
-      padding-left: 18px;
-      position: relative;
       font-weight: 500;
+      color: var(--muted);
+      font-size: 0.85rem;
+      letter-spacing: 0.03em;
+      border: 1px solid var(--line);
+      padding: 5px 11px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+    .experience-item ul{ list-style:none; margin-top: 12px; }
+    .experience-item li{
+      padding: 5px 0 5px 18px;
+      color: var(--body);
+      position: relative;
+      font-size: 0.97rem;
+      line-height: 1.7;
     }
     .experience-item li::before{
-      content:'▸';
+      content:'';
       position:absolute;
       left:0;
-      color: var(--primary);
-      font-weight: 900;
+      top: 15px;
+      width: 8px;
+      height: 1.5px;
+      background: var(--accent-2);
     }
 
     /* ===== PROJECTS ===== */
@@ -340,81 +446,89 @@
     }
     .project-card{
       grid-column: span 6;
-      padding: 18px;
-      transition: 0.2s ease;
+      padding: 22px 24px;
+      transition: 0.18s ease;
     }
-    .project-card:hover{
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-2);
-    }
+    .project-card:hover{ border-color: var(--accent-2); box-shadow: var(--shadow-2); }
     .project-icon{
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
       display:grid;
       place-items:center;
-      background: rgba(139,92,246,0.12);
-      color: var(--primary);
-      font-size: 1.35rem;
-      margin-bottom: 10px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin-bottom: 13px;
     }
     .project-card h3{
-      font-size: 1.1rem;
+      font-family: var(--serif);
+      font-size: 1.12rem;
+      font-weight: 600;
+      color: var(--ink);
       margin-bottom: 8px;
-      font-weight: 850;
+      line-height: 1.4;
     }
     .project-card p{
-      color: var(--text-light);
-      font-weight: 500;
+      color: var(--body);
+      font-size: 0.96rem;
       line-height: 1.75;
     }
 
     /* ===== PUBLICATIONS ===== */
-    .pub-wrap{
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .pub-section{
-      margin-top: 12px;
-      margin-bottom: 22px;
-    }
+    .pub-wrap{ max-width: 1000px; margin: 0 auto; }
+    .pub-section{ margin-bottom: 30px; }
     .pub-section h3{
-      font-size: 1.25rem;
-      color: var(--primary);
-      margin: 14px 0 12px;
-      text-align:left;
-      font-weight: 850;
+      font-family: var(--serif);
+      font-size: 1.18rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 0 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+      display:flex;
+      align-items:center;
+      gap: 10px;
     }
+    .pub-section h3 i{ color: var(--accent); font-size: 0.95rem; }
+
     .pub-item{
-      padding: 14px 14px;
-      border-left: 5px solid var(--primary);
-      margin-bottom: 12px;
-      transition: 0.2s ease;
+      padding: 15px 18px;
+      border-left: 3px solid var(--accent);
+      margin-bottom: 11px;
+      display:grid;
+      grid-template-columns: 92px 1fr;
+      gap: 16px;
+      align-items:start;
+      transition: 0.18s ease;
     }
-    .pub-item:hover{
-      transform: translateX(4px);
-      box-shadow: 0 12px 30px rgba(139,92,246,0.12);
-    }
+    .pub-item:hover{ border-color: var(--accent-2); box-shadow: var(--shadow-2); }
     .pub-badge{
       display:inline-block;
-      background: var(--primary);
-      color: var(--white);
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 850;
-      margin-bottom: 8px;
+      color: var(--accent);
+      border: 1px solid rgba(29,78,137,0.30);
+      background: var(--accent-soft);
+      padding: 4px 0;
+      width: 100%;
+      text-align:center;
+      border-radius: 6px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 2px;
     }
     .pub-title{
-      font-weight: 750;
-      color: var(--text-dark);
-      margin-bottom: 6px;
+      font-weight: 500;
+      color: var(--ink);
+      font-size: 0.99rem;
+      line-height: 1.6;
+      margin-bottom: 5px;
     }
     .pub-venue{
-      color: var(--text-light);
+      color: var(--muted);
       font-style: italic;
-      font-size: 0.95rem;
-      font-weight: 500;
+      font-size: 0.9rem;
     }
 
     /* ===== EDUCATION ===== */
@@ -425,121 +539,115 @@
     }
     .edu-card{
       grid-column: span 4;
-      padding: 18px;
-      transition: 0.2s ease;
+      padding: 22px 24px;
+      transition: 0.18s ease;
     }
-    .edu-card:hover{
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-2);
-    }
-    .edu-icon{
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      display:grid;
-      place-items:center;
-      background: rgba(139,92,246,0.12);
-      color: var(--primary);
-      font-size: 1.35rem;
-      margin-bottom: 10px;
+    .edu-card:hover{ border-color: var(--accent-2); box-shadow: var(--shadow-2); }
+    .edu-degree{
+      display:inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 9px;
     }
     .edu-card h3{
-      font-size: 1.05rem;
-      margin-bottom: 6px;
-      font-weight: 850;
+      font-family: var(--serif);
+      font-size: 1.06rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 7px;
+      line-height: 1.45;
     }
     .edu-institution{
-      color: var(--primary);
-      font-weight: 800;
-      margin-bottom: 3px;
-    }
-    .edu-date{
-      color: var(--text-light);
-      font-weight: 650;
-    }
-    .edu-thesis{
-      margin-top: 10px;
-      color: var(--text-light);
+      color: var(--body);
       font-size: 0.95rem;
-      line-height: 1.7;
-      font-style: italic;
       font-weight: 500;
+      margin-bottom: 3px;
+      line-height: 1.55;
     }
+    .edu-date{ color: var(--muted); font-size: 0.9rem; }
+    .edu-thesis{
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      color: var(--body);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+    .edu-thesis strong{ color: var(--ink); font-weight: 600; }
 
     /* ===== CONTACT ===== */
     .contact-grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 16px;
-      max-width: 1100px;
+      max-width: 1000px;
       margin: 0 auto;
     }
     .contact-card{
       grid-column: span 4;
-      padding: 18px;
+      padding: 24px;
       text-align:center;
-      transition: 0.2s ease;
+      transition: 0.18s ease;
     }
-    .contact-card:hover{
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-2);
-    }
-    .contact-card i{
-      font-size: 1.8rem;
-      color: var(--primary);
-      margin-bottom: 10px;
+    .contact-card:hover{ border-color: var(--accent-2); box-shadow: var(--shadow-2); }
+    .contact-card > i{
+      font-size: 1.25rem;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display:block;
     }
     .contact-card h3{
-      font-size: 1.05rem;
-      font-weight: 850;
-      margin-bottom: 8px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
     }
-    .contact-card p{
-      color: var(--text-light);
-      font-weight: 550;
-    }
+    .contact-card p{ color: var(--body); font-size: 0.96rem; line-height: 1.7; }
+    .contact-card p + p{ margin-top: 12px; }
     .contact-card a{
-      color: var(--primary);
+      color: var(--accent);
       text-decoration:none;
-      font-weight: 800;
+      font-weight: 500;
+      word-break: break-word;
     }
     .contact-card a:hover{ text-decoration: underline; }
+    .contact-note{ font-size: 0.83rem; color: var(--muted); }
 
     /* ===== FOOTER ===== */
     footer{
-      background: #0b1220;
-      color: rgba(255,255,255,0.92);
-      padding: 22px 0;
-      margin-top: 10px;
+      background: var(--navy-1);
+      color: rgba(255,255,255,0.72);
+      padding: 26px 0;
+      font-size: 0.92rem;
     }
     .footer-inner{
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .footer-links{
-      display:flex;
       gap: 14px;
       flex-wrap: wrap;
     }
+    .footer-links{ display:flex; gap: 20px; flex-wrap: wrap; }
     .footer-links a{
-      color: rgba(255,255,255,0.88);
+      color: rgba(255,255,255,0.82);
       text-decoration:none;
-      font-weight: 700;
-      opacity: 0.95;
+      font-weight: 500;
     }
-    .footer-links a:hover{ color: var(--accent); }
+    .footer-links a:hover{ color: var(--accent-light); }
 
-    /* ===== Research Highlights (premium cards + lightbox) ===== */
+    /* ===== RESEARCH HIGHLIGHTS ===== */
     .rh-grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
-      gap: 18px;
+      gap: 16px;
       align-items: stretch;
     }
-    .rh-card{ grid-column: span 6; overflow:hidden; }
+    .rh-card{ grid-column: span 6; overflow:hidden; padding: 0; }
     @media (max-width: 980px){ .rh-card{ grid-column: span 12; } }
 
     .rh-media{
@@ -549,24 +657,21 @@
     }
     .rh-img{
       width:100%;
-      height: 360px;
+      height: 340px;
       object-fit: cover;
       display:block;
-      background: rgba(17,24,39,0.04);
-      transform: scale(1.02);
-      transition: transform 0.5s ease;
+      background: #eef1f5;
+      transition: transform 0.6s ease;
     }
-    .rh-card:hover .rh-img{ transform: scale(1.06); }
-
-    @media (max-width: 768px){ .rh-img{ height: 260px; } }
+    .rh-card:hover .rh-img{ transform: scale(1.035); }
+    @media (max-width: 768px){ .rh-img{ height: 250px; } }
 
     .rh-overlay{
       position:absolute;
       inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.10), rgba(0,0,0,0.72));
+      background: linear-gradient(180deg, rgba(12,27,46,0.16) 0%, rgba(12,27,46,0.34) 45%, rgba(12,27,46,0.86) 100%);
       pointer-events:none;
     }
-
     .rh-top{
       position:absolute;
       top: 14px;
@@ -577,84 +682,77 @@
       align-items:center;
       gap: 12px;
     }
-
     .rh-chip{
       display:inline-flex;
       align-items:center;
-      gap: 9px;
-      padding: 9px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.14);
-      border: 1px solid rgba(255,255,255,0.22);
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 6px;
+      background: rgba(12,27,46,0.55);
+      border: 1px solid rgba(255,255,255,0.20);
       color:#fff;
-      font-weight: 750;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 28px rgba(0,0,0,0.20);
-      font-size: 0.9rem;
+      font-weight: 500;
+      font-size: 0.82rem;
+      letter-spacing: 0.03em;
+      backdrop-filter: blur(6px);
     }
-
     .rh-btn{
       display:inline-flex;
       align-items:center;
-      gap: 10px;
-      border-radius: 999px;
-      padding: 10px 14px;
-      border: 1px solid rgba(255,255,255,0.25);
-      background: rgba(255,255,255,0.14);
+      gap: 8px;
+      border-radius: 6px;
+      padding: 8px 13px;
+      border: 1px solid rgba(255,255,255,0.28);
+      background: rgba(12,27,46,0.45);
       color:#fff;
-      font-weight: 800;
+      font-weight: 500;
+      font-size: 0.85rem;
+      font-family: inherit;
       cursor:pointer;
-      transition: 0.2s ease;
-      backdrop-filter: blur(10px);
+      transition: 0.18s ease;
+      backdrop-filter: blur(6px);
     }
-    .rh-btn:hover{
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.22);
-      border-color: rgba(255,255,255,0.40);
-    }
+    .rh-btn:hover{ background: rgba(255,255,255,0.20); border-color: rgba(255,255,255,0.5); }
 
     .rh-bottom{
       position:absolute;
-      left: 14px;
-      right: 14px;
-      bottom: 14px;
+      left: 20px;
+      right: 20px;
+      bottom: 18px;
       color:#fff;
     }
     .rh-title{
-      font-size: 1.12rem;
-      font-weight: 900;
-      letter-spacing: -0.2px;
-      line-height: 1.25;
-      text-shadow: 0 10px 22px rgba(0,0,0,0.45);
+      font-family: var(--serif);
+      font-size: 1.16rem;
+      font-weight: 600;
+      line-height: 1.35;
     }
     .rh-sub{
       margin-top: 6px;
-      opacity: 0.92;
-      font-weight: 550;
-      line-height: 1.55;
-      text-shadow: 0 10px 22px rgba(0,0,0,0.35);
+      font-size: 0.92rem;
+      opacity: 0.88;
+      line-height: 1.6;
     }
 
     /* Lightbox */
     .rh-lightbox{
       position: fixed;
       inset: 0;
-      background: rgba(8,10,18,0.82);
+      background: rgba(8,16,28,0.88);
       display:none;
       align-items:center;
       justify-content:center;
-      padding: 16px;
+      padding: 18px;
       z-index: 9999;
     }
     .rh-lightbox.open{ display:flex; }
     .rh-viewer{
       width: min(1200px, 96vw);
       height: min(86vh, 820px);
-      border-radius: 18px;
+      border-radius: 14px;
       overflow:hidden;
-      background:#0b1220;
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow: 0 40px 120px rgba(0,0,0,0.60);
+      background: var(--navy-1);
+      border: 1px solid rgba(255,255,255,0.12);
       position: relative;
     }
     .rh-viewer img{
@@ -662,38 +760,37 @@
       height: 100%;
       object-fit: contain;
       display:block;
-      background:#0b1220;
     }
     .rh-close{
       position:absolute;
       top: 12px;
       right: 12px;
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
       border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.08);
       color: rgba(255,255,255,0.95);
       cursor:pointer;
-      font-weight: 900;
-      transition: 0.2s ease;
+      transition: 0.18s ease;
       display:grid;
       place-items:center;
+      font-size: 1rem;
     }
-    .rh-close:hover{
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.16);
-    }
+    .rh-close:hover{ background: rgba(255,255,255,0.18); }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 980px){
-      .hero-content{ grid-template-columns: 1fr; }
-      .hero-photo-wrap{ justify-content: center; }
+      .hero-content{ grid-template-columns: 1fr; gap: 2.4rem; }
+      .hero-photo-wrap{ justify-content: center; order: -1; }
       .hero-text{ text-align:center; }
+      .hero-rule{ margin-left:auto; margin-right:auto; }
+      .hero-focus{ margin-left:auto; margin-right:auto; text-align:left; }
+      .interest-chips{ justify-content:center; }
       .hero-meta{ justify-content:center; }
       .hero-buttons{ justify-content:center; }
       .social-links{ justify-content:center; }
-
+      .hero-label{ justify-content:center; }
       .competency-tag{ grid-column: span 6; }
       .project-card{ grid-column: span 12; }
       .edu-card{ grid-column: span 12; }
@@ -701,49 +798,58 @@
     }
 
     @media (max-width: 768px){
-      nav .container{ padding: 12px 18px; }
+      nav .container{ padding: 13px 20px; }
       .hamburger{ display:flex; }
       .nav-menu{
         position: fixed;
         left: -100%;
-        top: 64px;
+        top: 60px;
         flex-direction: column;
-        background: rgba(255,255,255,0.96);
+        background: rgba(255,255,255,0.98);
         width: 100%;
         text-align: center;
         transition: 0.25s ease;
-        border-bottom: 1px solid rgba(17,24,39,0.06);
-        padding: 18px 0;
+        border-bottom: 1px solid var(--line);
+        padding: 20px 0;
         gap: 1rem;
       }
       .nav-menu.active{ left: 0; }
-      .hero{ padding: 78px 0 42px; }
-      .hero-text h1{ font-size: 2.25rem; }
-      .hero-text h2{ font-size: 1.25rem; }
-      .hero-photo{ width: 240px; height: 240px; }
-      section{ padding: 48px 0; }
+
+      .hero{ padding: 62px 0 48px; }
+      .hero-text h1{ font-size: 2.2rem; }
+      .hero-text h2{ font-size: 1.1rem; }
+      .hero-kr{ font-size: 0.95rem; }
+      .hero-affil{ font-size: 0.94rem; }
+      .hero-focus{ padding: 15px 16px; }
+      .hero-focus-text{ font-size: 1.02rem; }
+      .hero-photo{ width: 210px; height: 250px; }
+
+      section{ padding: 52px 0; }
+      .section-title{ font-size: 1.7rem; }
+      .summary-box{ padding: 22px; }
+      .experience-item{ padding: 20px; }
+      .pub-item{ grid-template-columns: 1fr; gap: 8px; }
+      .pub-badge{ width: auto; padding: 4px 11px; }
     }
   </style>
 </head>
-
 <body>
 
   <!-- NAV -->
   <nav>
     <div class="container">
-      <div class="nav-brand">Rumi Acharya</div>
-
+      <div class="nav-brand">Rumi Acharya<span>, Ph.D.</span></div>
       <ul class="nav-menu" id="navMenu">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#competencies">Skills</a></li>
-        <li><a href="#research-images">Researches</a></li>
-        <li><a href="#research">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#research-images">Research</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#publications">Publications</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-
       <div class="hamburger" id="hamburger" aria-label="Open menu" role="button" tabindex="0">
         <span></span><span></span><span></span>
       </div>
@@ -754,43 +860,39 @@
   <section id="home" class="hero">
     <div class="container">
       <div class="hero-content">
+        <div class="hero-text">
+          <h1>Rumi Acharya, Ph.D.</h1>
+          <p class="hero-kr">루미 아차르야</p>
+          <h2>Postdoctoral Associate</h2>
+          <p class="hero-affil">
+            School of Integrative Engineering<br>
+            Chung-Ang University, Seoul, Republic of Korea
+          </p>
 
-       <h1>Rumi Acharya, Ph.D.</h1>
-<p class="hero-kr">루미 아차르야</p>
-<h2>Postdoctoral Associate</h2>
-<p class="hero-affil">
-  School of Integrative Engineering<br>
-  Chung-Ang University, Seoul, Republic of Korea
-</p>
-<p class="hero-specialties">
-  Biomaterials • 3D Bioprinting • Smart Hydrogels • Tissue Engineering
-</p>
-<p class="hero-research">
-  <strong>Research Area:</strong> Multifunctional biomaterials for antimicrobial therapy &amp; tissue regeneration
-</p>
-.hero-kr{
-  font-size: 1.15rem;
-  font-weight: 600;
-  opacity: 0.9;
-  margin-bottom: 0.55rem;
-  letter-spacing: 0.5px;
-}
-.hero-affil{
-  font-size: 1.02rem;
-  font-weight: 600;
-  opacity: 0.94;
-  line-height: 1.5;
-  margin-bottom: 0.7rem;
-}
-.hero-research{
-  font-size: 1.0rem;
-  font-weight: 500;
-  opacity: 0.92;
-  line-height: 1.55;
-  margin-bottom: 0.4rem;
-}
+          <div class="hero-rule"></div>
+
+          <!-- CURRENT research topic (emphasised) -->
+          <div class="hero-focus">
+            <span class="hero-label"><i class="fas fa-flask"></i> Current Research</span>
+            <p class="hero-focus-text">
+              Development of multifunctional biomaterials for antimicrobial therapy and tissue regeneration
+            </p>
+          </div>
+
+          <!-- Broader research interests -->
+          <div class="hero-interests">
+            <span class="hero-label"><i class="fas fa-compass"></i> Research Interests</span>
+            <div class="interest-chips">
+              <span>Biomaterials</span>
+              <span>3D Bioprinting</span>
+              <span>Smart Hydrogels</span>
+              <span>Tissue Engineering</span>
+            </div>
+          </div>
+
           <div class="hero-meta">
-            <span><i class="fas fa-map-marker-alt"></i> Chuncheon, Republic of Korea</span>
+            <span><i class="fas fa-map-marker-alt"></i> Seoul, Republic of Korea</span>
+            <span><i class="fas fa-envelope"></i> <a href="mailto:rummikorea@cau.ac.kr">rummikorea@cau.ac.kr</a></span>
             <span><i class="fas fa-phone"></i> +82-10-2531-0294</span>
           </div>
 
@@ -801,23 +903,23 @@
             </a>
           </div>
 
-          <div class="social-links" aria-label="Social links">
-            <a href="mailto:acharyarumi7@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+          <div class="social-links" aria-label="Profiles">
+            <a href="mailto:rummikorea@cau.ac.kr" title="Email (Chung-Ang University)"><i class="fas fa-envelope"></i></a>
+            <a href="mailto:acharyarumi7@gmail.com" title="Email (personal)"><i class="fas fa-at"></i></a>
             <a href="https://www.researchgate.net/profile/Rumi-Acharya" target="_blank" rel="noopener" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
             <a href="https://scholar.google.com/citations?user=d3BaaCoAAAAJ&hl=en" target="_blank" rel="noopener" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
           </div>
         </div>
 
         <div class="hero-photo-wrap">
-          <!-- IMPORTANT: Put Rumi.png in same folder as index.html -->
+          <!-- IMPORTANT: keep Rumi.png in the same folder as index.html -->
           <img
             src="./Rumi.png"
-            alt="Rumi Acharya"
+            alt="Portrait of Rumi Acharya"
             class="hero-photo"
-            onerror="this.onerror=null; this.src='https://via.placeholder.com/280/8b5cf6/ffffff?text=Rumi';"
+            onerror="this.onerror=null; this.src='https://via.placeholder.com/270x320/16324f/ffffff?text=Rumi+Acharya';"
           />
         </div>
-
       </div>
     </div>
   </section>
@@ -826,39 +928,42 @@
   <section id="about">
     <div class="container">
       <h2 class="section-title">Professional Summary</h2>
-
       <div class="summary-box card">
+        <p>
+          Postdoctoral Associate at the School of Integrative Engineering, <strong>Chung-Ang University</strong> (Seoul),
+          working on the development of <strong>multifunctional biomaterials for antimicrobial therapy and
+          tissue regeneration</strong>.
+        </p>
         <p>
           Multidisciplinary researcher specializing in <strong>bioactive and electro-magnetic hydrogel systems</strong>
           for regenerative medicine, smart skin patches, and biosensing. Skilled in <strong>3D bioprinting</strong>,
           nanocomposite design, microneedle fabrication, and advanced cellular assays (hBMSCs, HaCaT).
         </p>
         <p>
-          Experienced in GLP documentation, ISO 13485 QMS environments, and data-driven scientific communication
+          Experienced in GLP documentation, ISO 13485 QMS environments, and data-driven scientific communication,
           with publications in <strong>Advanced Healthcare Materials</strong>, <strong>Advanced Materials Technologies</strong>,
-          and <strong>Journal of Nanobiotechnology</strong>.
+          <strong>Biomaterials</strong>, and the <strong>Journal of Nanobiotechnology</strong>.
         </p>
       </div>
     </div>
   </section>
 
   <!-- SKILLS -->
-  <section id="competencies" class="bg-light">
+  <section id="competencies" class="bg-light bordered-top">
     <div class="container">
       <h2 class="section-title">Core Competencies</h2>
-
       <div class="competencies-grid">
-        <div class="competency-tag"><i class="fas fa-print"></i> 3D Bioprinting (DIW/DLP)</div>
+        <div class="competency-tag"><i class="fas fa-print"></i> 3D Bioprinting (DIW / DLP)</div>
         <div class="competency-tag"><i class="fas fa-flask"></i> Bioactive-ion Hydrogel Formulation</div>
         <div class="competency-tag"><i class="fas fa-syringe"></i> Microneedle Platforms</div>
         <div class="competency-tag"><i class="fas fa-microscope"></i> Cell Culture (hBMSCs, HaCaT)</div>
-        <div class="competency-tag"><i class="fas fa-chart-line"></i> Rheology & Mechanical Testing</div>
+        <div class="competency-tag"><i class="fas fa-chart-line"></i> Rheology &amp; Mechanical Testing</div>
         <div class="competency-tag"><i class="fas fa-atom"></i> ICP-OES Ion Release</div>
-        <div class="competency-tag"><i class="fas fa-eye"></i> SEM/EDS • FTIR • XRD</div>
-        <div class="competency-tag"><i class="fas fa-image"></i> Confocal/Fluorescence Microscopy</div>
-        <div class="competency-tag"><i class="fas fa-laptop-code"></i> Data Visualization Tools</div>
-        <div class="competency-tag"><i class="fas fa-shield-alt"></i> GLP & ISO 13485 QMS</div>
-        <div class="competency-tag"><i class="fas fa-bolt"></i> Electro/Magnetic Stimulation</div>
+        <div class="competency-tag"><i class="fas fa-vector-square"></i> SEM/EDS · FTIR · XRD</div>
+        <div class="competency-tag"><i class="fas fa-eye"></i> Confocal / Fluorescence Microscopy</div>
+        <div class="competency-tag"><i class="fas fa-chart-bar"></i> Data Visualization &amp; Analysis</div>
+        <div class="competency-tag"><i class="fas fa-clipboard-check"></i> GLP &amp; ISO 13485 QMS</div>
+        <div class="competency-tag"><i class="fas fa-bolt"></i> Electro / Magnetic Stimulation</div>
         <div class="competency-tag"><i class="fas fa-layer-group"></i> Nanocomposite Hydrogels</div>
       </div>
     </div>
@@ -868,8 +973,22 @@
   <section id="experience">
     <div class="container">
       <h2 class="section-title">Professional Experience</h2>
-
       <div class="experience-wrap">
+
+        <div class="experience-item card">
+          <div class="exp-header">
+            <div>
+              <div class="exp-title">Postdoctoral Associate</div>
+              <div class="exp-org">School of Integrative Engineering, Chung-Ang University, Seoul, Korea</div>
+            </div>
+            <div class="exp-date">2026 – Present</div>
+          </div>
+          <ul>
+            <li>Developing multifunctional biomaterials for antimicrobial therapy and tissue regeneration.</li>
+            <li>Designing next-generation nanocomposite and hydrogel platforms bridging materials science and biomedical application.</li>
+          </ul>
+        </div>
+
         <div class="experience-item card">
           <div class="exp-header">
             <div>
@@ -900,66 +1019,61 @@
             <li>Bacterial colonization and antibacterial drug experiments for resistant bacteria.</li>
           </ul>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- RESEARCH HIGHLIGHTS (UPDATED: pdf_p10.png + pdf_p12.png) -->
-  <section id="research-images" class="bg-light">
+  <!-- RESEARCH HIGHLIGHTS -->
+  <section id="research-images" class="bg-light bordered-top">
     <div class="container">
       <h2 class="section-title">Research Highlights</h2>
       <p class="subtext-center">
-        Selected visuals from my Mg–ND/HAp composite scaffold and 3D printing workflow. Click “View” for fullscreen.
+        Selected figures from the Mg–ND/HAp composite scaffold study and the 3D printing workflow. Select “View” for the full-size figure.
       </p>
 
       <div class="rh-grid">
-        <!-- Card 1 -->
         <article class="rh-card card">
           <div class="rh-media">
             <img
               src="pdf_p10.png"
-              alt="Mg–ND/HAp Composite: Structural Evidence (SEM/XRD)"
+              alt="Mg–ND/HAp composite: structural evidence (SEM/XRD)"
               class="rh-img"
               loading="lazy"
-              onerror="this.onerror=null; this.src='https://via.placeholder.com/1400x900/111827/ffffff?text=pdf_p10.png+missing';"
+              onerror="this.onerror=null; this.src='https://via.placeholder.com/1400x900/16324f/ffffff?text=pdf_p10.png+missing';"
             />
             <div class="rh-overlay"></div>
-
             <div class="rh-top">
-              <span class="rh-chip"><i class="fas fa-microscope"></i> SEM • XRD</span>
+              <span class="rh-chip"><i class="fas fa-microscope"></i> SEM · XRD</span>
               <button class="rh-btn" type="button" data-lightbox="pdf_p10.png">
                 <i class="fas fa-expand"></i> View
               </button>
             </div>
-
             <div class="rh-bottom">
               <div class="rh-title">Mg–ND/HAp Composite: Structural Evidence</div>
-              <div class="rh-sub">Microstructural validation supporting antibacterial bone scaffold design.</div>
+              <div class="rh-sub">Microstructural validation supporting the antibacterial bone scaffold design.</div>
             </div>
           </div>
         </article>
 
-        <!-- Card 2 -->
         <article class="rh-card card">
           <div class="rh-media">
             <img
               src="pdf_p12.png"
-              alt="3D Printing Workflow + Morphology Across Conditions"
+              alt="3D printing workflow and morphology across conditions"
               class="rh-img"
               loading="lazy"
-              onerror="this.onerror=null; this.src='https://via.placeholder.com/1400x900/111827/ffffff?text=pdf_p12.png+missing';"
+              onerror="this.onerror=null; this.src='https://via.placeholder.com/1400x900/16324f/ffffff?text=pdf_p12.png+missing';"
             />
             <div class="rh-overlay"></div>
-
             <div class="rh-top">
               <span class="rh-chip"><i class="fas fa-print"></i> DIW Process</span>
               <button class="rh-btn" type="button" data-lightbox="pdf_p12.png">
                 <i class="fas fa-expand"></i> View
               </button>
             </div>
-
             <div class="rh-bottom">
-              <div class="rh-title">3D Printing: Fabrication Workflow + Morphology</div>
+              <div class="rh-title">3D Printing: Fabrication Workflow &amp; Morphology</div>
               <div class="rh-sub">End-to-end printing workflow and morphology across experimental conditions.</div>
             </div>
           </div>
@@ -968,40 +1082,36 @@
     </div>
   </section>
 
-  <!-- LIGHTBOX (Research Highlights) -->
+  <!-- LIGHTBOX -->
   <div class="rh-lightbox" id="rhLightbox" aria-hidden="true">
     <div class="rh-viewer" role="dialog" aria-modal="true" aria-label="Image viewer">
       <button class="rh-close" id="rhClose" type="button" aria-label="Close">
         <i class="fas fa-times"></i>
       </button>
-      <img id="rhViewerImg" alt="Fullscreen preview" />
+      <img id="rhViewerImg" alt="Full-size figure" />
     </div>
   </div>
 
   <!-- PROJECTS -->
-  <section id="research">
+  <section id="projects">
     <div class="container">
       <h2 class="section-title">Key R&amp;D Projects</h2>
-
       <div class="projects-grid">
         <div class="project-card card">
           <div class="project-icon"><i class="fas fa-bone"></i></div>
           <h3>Bioactive Ion-Reinforced Bio-Ceramic Ink</h3>
-          <p>Development of shear-thinning hybrid ink integrating bio-ceramics with bioactive ions and polymeric binders for high-fidelity DIW printing and improved osteogenic/antibacterial performance.</p>
+          <p>Shear-thinning hybrid ink integrating bio-ceramics with bioactive ions and polymeric binders for high-fidelity DIW printing and improved osteogenic/antibacterial performance.</p>
         </div>
-
         <div class="project-card card">
           <div class="project-icon"><i class="fas fa-gem"></i></div>
           <h3>Mg–Nanodiamond–HAp 3D-Printed Scaffold</h3>
-          <p>Ion-releasing hybrid scaffold with controlled Mg²⁺ release (ICP-OES) and osteogenic validation (ALP/ARS/qPCR) for bone tissue engineering.</p>
+          <p>Ion-releasing hybrid scaffold with controlled Mg²⁺ release (ICP-OES) and osteogenic validation (ALP / ARS / qPCR) for bone tissue engineering.</p>
         </div>
-
         <div class="project-card card">
           <div class="project-icon"><i class="fas fa-hand-sparkles"></i></div>
           <h3>mCNC Conductive Microneedle Hydrogel</h3>
-          <p>Dual-stimulus platform enhancing ZO-1/YAP-TAZ pathways for skin barrier restoration with tunable rheology for smart skin patch applications.</p>
+          <p>Dual-stimulus platform enhancing ZO-1 / YAP-TAZ pathways for skin barrier restoration, with tunable rheology for smart skin patch applications.</p>
         </div>
-
         <div class="project-card card">
           <div class="project-icon"><i class="fas fa-bolt"></i></div>
           <h3>Piezoelectric ZnO–Mg²⁺ Bioglass Scaffold</h3>
@@ -1012,76 +1122,110 @@
   </section>
 
   <!-- PUBLICATIONS -->
-  <section id="publications" class="bg-light">
+  <section id="publications" class="bg-light bordered-top">
     <div class="container">
-      <h2 class="section-title">Publications (2023–2025)</h2>
+      <h2 class="section-title">Publications</h2>
 
       <div class="pub-wrap">
         <div class="pub-section">
-          <h3>First Author Publications</h3>
+          <h3><i class="fas fa-star"></i> First-Author Publications</h3>
 
           <div class="pub-item card">
             <span class="pub-badge">Submitted</span>
-            <div class="pub-title">Anisotropic Magneto-Conductive Hydrogel Modulates YAP/TAZ Pathway for Accelerated Skin Barrier Regeneration</div>
-            <div class="pub-venue">Ceramics International</div>
+            <div>
+              <div class="pub-title">Anisotropic Magneto-Conductive Hydrogel Modulates YAP/TAZ Pathway for Accelerated Skin Barrier Regeneration</div>
+              <div class="pub-venue">Ceramics International</div>
+            </div>
           </div>
 
           <div class="pub-item card">
             <span class="pub-badge">2025</span>
-            <div class="pub-title">3D-printed magnesium/nanodiamond dual-doped hydroxyapatite composite hydrogels with antibacterial and in vitro bioactive properties for bone tissue engineering</div>
-            <div class="pub-venue">Journal of the American Ceramic Society, 2025</div>
+            <div>
+              <div class="pub-title">3D-printed magnesium/nanodiamond dual-doped hydroxyapatite composite hydrogels with antibacterial and in vitro bioactive properties for bone tissue engineering</div>
+              <div class="pub-venue">Journal of the American Ceramic Society, 2025</div>
+            </div>
           </div>
 
           <div class="pub-item card">
             <span class="pub-badge">2025</span>
-            <div class="pub-title">Physical Stimuli-Responsive DNA Hydrogels: Design, Fabrication Strategies and Biomedical Applications</div>
-            <div class="pub-venue">Journal of Nanobiotechnology, 2025</div>
+            <div>
+              <div class="pub-title">Physical Stimuli-Responsive DNA Hydrogels: Design, Fabrication Strategies and Biomedical Applications</div>
+              <div class="pub-venue">Journal of Nanobiotechnology, 2025</div>
+            </div>
           </div>
 
           <div class="pub-item card">
             <span class="pub-badge">2024</span>
-            <div class="pub-title">Single-Walled Carbon Nanotube-Based Optical Nano/Biosensors for Biomedical Applications</div>
-            <div class="pub-venue">Advanced Materials Technologies, 2024</div>
+            <div>
+              <div class="pub-title">Single-Walled Carbon Nanotube-Based Optical Nano/Biosensors for Biomedical Applications</div>
+              <div class="pub-venue">Advanced Materials Technologies, 2024</div>
+            </div>
           </div>
 
           <div class="pub-item card">
             <span class="pub-badge">2023</span>
-            <div class="pub-title">Stimuli-Responsive 3D Printable Conductive Hydrogel: Toward Macrophage Polarization &amp; Wound Healing</div>
-            <div class="pub-venue">Advanced Healthcare Materials, 2023</div>
+            <div>
+              <div class="pub-title">Stimuli-Responsive 3D Printable Conductive Hydrogel: Toward Macrophage Polarization &amp; Wound Healing</div>
+              <div class="pub-venue">Advanced Healthcare Materials, 2023</div>
+            </div>
           </div>
 
           <div class="pub-item card">
             <span class="pub-badge">2023</span>
-            <div class="pub-title">Electroactive Polymer–Metal Composites for Tissue Regeneration (Review)</div>
-            <div class="pub-venue">Journal of Functional Biomaterials, 2023</div>
+            <div>
+              <div class="pub-title">Electroactive Polymer–Metal Composites for Tissue Regeneration (Review)</div>
+              <div class="pub-venue">Journal of Functional Biomaterials, 2023</div>
+            </div>
           </div>
         </div>
 
         <div class="pub-section">
-          <h3>Selected Co-Author Publications</h3>
+          <h3><i class="fas fa-users"></i> Selected Co-Author Publications</h3>
+
+          <!-- ============================================================
+               ADD THE NEW CO-AUTHOR PAPER HERE — copy this block, fill in
+               the year, title and journal, and place it in year order.
+
+          <div class="pub-item card">
+            <span class="pub-badge">YEAR</span>
+            <div>
+              <div class="pub-title">PAPER TITLE</div>
+              <div class="pub-venue">JOURNAL NAME, YEAR</div>
+            </div>
+          </div>
+
+               ============================================================ -->
 
           <div class="pub-item card">
             <span class="pub-badge">2025</span>
-            <div class="pub-title">Tailoring Osteoimmunity and Hemostasis Using 3D-Printed Nano-Photocatalytic Bactericidal Scaffold</div>
-            <div class="pub-venue">Biomaterials, 2025</div>
+            <div>
+              <div class="pub-title">Tailoring Osteoimmunity and Hemostasis Using 3D-Printed Nano-Photocatalytic Bactericidal Scaffold</div>
+              <div class="pub-venue">Biomaterials, 2025</div>
+            </div>
           </div>
 
           <div class="pub-item card">
             <span class="pub-badge">2024</span>
-            <div class="pub-title">Electroconductive Nanocellulose — A Versatile Hydrogel Platform</div>
-            <div class="pub-venue">Advanced Healthcare Materials, 2024</div>
+            <div>
+              <div class="pub-title">Electroconductive Nanocellulose — A Versatile Hydrogel Platform</div>
+              <div class="pub-venue">Advanced Healthcare Materials, 2024</div>
+            </div>
           </div>
 
           <div class="pub-item card">
             <span class="pub-badge">2024</span>
-            <div class="pub-title">Stimuli-Triggered Pollen-Inspired Micro/Nanorobots</div>
-            <div class="pub-venue">Nano Today, 2024</div>
+            <div>
+              <div class="pub-title">Stimuli-Triggered Pollen-Inspired Micro/Nanorobots</div>
+              <div class="pub-venue">Nano Today, 2024</div>
+            </div>
           </div>
 
           <div class="pub-item card">
             <span class="pub-badge">2024</span>
-            <div class="pub-title">3D Printable Hydrogel Bioelectronic Interfaces for Healthcare Monitoring</div>
-            <div class="pub-venue">Advanced Materials Technologies, 2024</div>
+            <div>
+              <div class="pub-title">3D Printable Hydrogel Bioelectronic Interfaces for Healthcare Monitoring</div>
+              <div class="pub-venue">Advanced Materials Technologies, 2024</div>
+            </div>
           </div>
         </div>
       </div>
@@ -1092,27 +1236,24 @@
   <section id="education">
     <div class="container">
       <h2 class="section-title">Education</h2>
-
       <div class="education-grid">
         <div class="edu-card card">
-          <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
-          <h3>Ph.D. (Biosystem Engineering &amp; Smart Agriculture)</h3>
+          <span class="edu-degree">Ph.D.</span>
+          <h3>Department of Biosystems Engineering</h3>
           <p class="edu-institution">Kangwon National University, Korea</p>
           <p class="edu-date">Graduated 2026</p>
           <p class="edu-thesis"><strong>Thesis:</strong> 3D-printed metal-ion-doped nanocomposite hydrogels with antibacterial and in vitro bioactive properties for bone tissue engineering</p>
         </div>
-
         <div class="edu-card card">
-          <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
-          <h3>M.Sc. (Plant Science)</h3>
-          <p class="edu-institution">Guru Ghasidas Vishwavidyalaya (Central University), India</p>
+          <span class="edu-degree">M.S.</span>
+          <h3>Department of Botany</h3>
+          <p class="edu-institution">Guru Ghasidas University (Central University), Chhattisgarh, India</p>
           <p class="edu-date">2018</p>
         </div>
-
         <div class="edu-card card">
-          <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
-          <h3>B.Sc. (Plant Science)</h3>
-          <p class="edu-institution">University of Burdwan, India</p>
+          <span class="edu-degree">B.S.</span>
+          <h3>Department of Botany</h3>
+          <p class="edu-institution">The University of Burdwan, India</p>
           <p class="edu-date">2015</p>
         </div>
       </div>
@@ -1120,27 +1261,31 @@
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="bg-light">
+  <section id="contact" class="bg-light bordered-top">
     <div class="container">
-      <h2 class="section-title">Get in Touch</h2>
-
+      <h2 class="section-title">Contact</h2>
       <div class="contact-grid">
         <div class="contact-card card">
           <i class="fas fa-envelope"></i>
           <h3>Email</h3>
-          <p><a href="mailto:acharyarumi7@gmail.com">acharyarumi7@gmail.com</a></p>
+          <p>
+            <a href="mailto:rummikorea@cau.ac.kr">rummikorea@cau.ac.kr</a><br>
+            <span class="contact-note">Chung-Ang University</span>
+          </p>
+          <p>
+            <a href="mailto:acharyarumi7@gmail.com">acharyarumi7@gmail.com</a><br>
+            <span class="contact-note">Personal</span>
+          </p>
         </div>
-
         <div class="contact-card card">
           <i class="fas fa-phone"></i>
           <h3>Phone</h3>
           <p>+82-10-2531-0294</p>
         </div>
-
         <div class="contact-card card">
           <i class="fas fa-map-marker-alt"></i>
-          <h3>Location</h3>
-          <p>Chuncheon<br>Republic of Korea</p>
+          <h3>Office</h3>
+          <p>School of Integrative Engineering<br>Chung-Ang University<br>Seoul, Republic of Korea</p>
         </div>
       </div>
     </div>
@@ -1150,10 +1295,11 @@
   <footer>
     <div class="container">
       <div class="footer-inner">
-        <p>© 2025 Rumi Acharya. All rights reserved.</p>
+        <p>© 2026 Rumi Acharya, Ph.D.</p>
         <div class="footer-links">
           <a href="https://scholar.google.com/citations?user=d3BaaCoAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
           <a href="https://www.researchgate.net/profile/Rumi-Acharya" target="_blank" rel="noopener">ResearchGate</a>
+          <a href="mailto:rummikorea@cau.ac.kr">Email</a>
         </div>
       </div>
     </div>
@@ -1169,6 +1315,7 @@
     hamburger.addEventListener('keydown', (e) => {
       if(e.key === 'Enter' || e.key === ' ') toggleMenu();
     });
+
     document.querySelectorAll('.nav-menu a').forEach(link => {
       link.addEventListener('click', () => navMenu.classList.remove('active'));
     });
@@ -1199,6 +1346,5 @@
     rhLightbox.addEventListener('click', (e) => { if(e.target === rhLightbox) closeRh(); });
     document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeRh(); });
   </script>
-
 </body>
 </html>
